@@ -302,7 +302,7 @@ select {
 
 .header__menu-item:hover,
 .menu-drawer__menu-item:hover {
-  color: var(--da-white) !important;
+  color: black !important;
   opacity: 0.8;
 }
 
