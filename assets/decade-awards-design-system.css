@@ -338,7 +338,7 @@ select {
 
 .header__icon svg,
 .header__icon path {
-  stroke: var(--da-white);
+  stroke: black;
   fill: none;
 }
 
