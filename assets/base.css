@@ -2456,6 +2456,12 @@ input[type='checkbox'] {
   max-width: 100%;
 }
 
+@media screen and (min-width: 500px) {
+  .header__heading-logo {
+    max-width:210px !important;
+  }
+}
+
 .header__heading-logo-wrapper {
   width: 100%;
   display: inline-block;
