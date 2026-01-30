@@ -332,7 +332,7 @@
         "background_color": "#ffffff",
         "subheading": "Just Arrived",
         "heading": "New Products",
-        "collection": "medals",
+        "collection": "new-products",
         "products_to_show": 10,
         "columns_desktop": 4,
         "show_view_all": true
