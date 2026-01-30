@@ -207,7 +207,7 @@
 /* Mobile adjustments */
 @media (max-width: 749px) {
   .da-carousel-section {
-    padding: 3rem 0;
+    padding: 20px;
   }
 
   .da-carousel-section__header {
