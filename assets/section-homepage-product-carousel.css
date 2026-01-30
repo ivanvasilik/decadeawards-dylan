@@ -10,7 +10,6 @@
 .da-carousel-section__container {
   max-width: var(--page-width, 1200px);
   margin: 0 auto;
-  padding: 0 1.5rem;
 }
 
 /* Header */
@@ -208,7 +207,7 @@
 /* Mobile adjustments */
 @media (max-width: 749px) {
   .da-carousel-section {
-    padding: 3rem 0;
+    padding: 20px;
   }
 
   .da-carousel-section__header {
