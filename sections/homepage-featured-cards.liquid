@@ -1,0 +1,225 @@
+{%- comment -%}
+  Homepage Featured Cards - Decade Awards
+  Elegant promotional cards with images and descriptions
+{%- endcomment -%}
+
+{{ 'section-homepage-featured-cards.css' | asset_url | stylesheet_tag }}
+
+<section class="da-featured" style="background: {{ section.settings.background_color }};">
+  <div class="da-featured__container">
+    {%- if section.settings.heading != blank -%}
+      <div class="da-featured__header">
+        {%- if section.settings.subheading != blank -%}
+          <span class="da-featured__subheading">{{ section.settings.subheading }}</span>
+        {%- endif -%}
+        <h2 class="da-featured__heading">{{ section.settings.heading }}</h2>
+      </div>
+    {%- endif -%}
+
+    <div class="da-featured__grid">
+      {%- for block in section.blocks -%}
+        <article class="da-featured__card" {{ block.shopify_attributes }} style="--card-index: {{ forloop.index }};">
+          <div class="da-featured__card-image-wrap">
+            {%- if block.settings.image != blank -%}
+              <img
+                src="{{ block.settings.image | image_url: width: 600 }}"
+                srcset="{{ block.settings.image | image_url: width: 400 }} 400w,
+                        {{ block.settings.image | image_url: width: 600 }} 600w"
+                sizes="(max-width: 749px) 100vw, 25vw"
+                alt="{{ block.settings.title }}"
+                class="da-featured__card-image"
+                loading="lazy"
+              >
+            {%- elsif block.settings.external_image != blank -%}
+              <img
+                src="{{ block.settings.external_image }}"
+                alt="{{ block.settings.title }}"
+                class="da-featured__card-image"
+                loading="lazy"
+              >
+            {%- else -%}
+              <div class="da-featured__card-placeholder">
+                {{ 'collection-1' | placeholder_svg_tag }}
+              </div>
+            {%- endif -%}
+            <div class="da-featured__card-image-overlay"></div>
+          </div>
+
+          <div class="da-featured__card-content">
+            <div class="da-featured__card-icon">
+              {%- case block.settings.icon -%}
+                {%- when 'trophy' -%}
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18"/>
+                    <path d="M16 10a4 4 0 01-8 0"/>
+                  </svg>
+                {%- when 'star' -%}
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                  </svg>
+                {%- when 'award' -%}
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="8" r="7"/>
+                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                  </svg>
+                {%- when 'shield' -%}
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  </svg>
+                {%- else -%}
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="8" r="7"/>
+                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
+                  </svg>
+                {%- endcase -%}
+            </div>
+
+            <h3 class="da-featured__card-title">{{ block.settings.title }}</h3>
+            <p class="da-featured__card-text">{{ block.settings.description }}</p>
+
+            {%- if block.settings.button_label != blank -%}
+              <a href="{{ block.settings.button_link }}" class="da-featured__card-button">
+                {{ block.settings.button_label }}
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            {%- endif -%}
+          </div>
+
+          <div class="da-featured__card-accent"></div>
+        </article>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Cards",
+  "tag": "section",
+  "class": "section-featured-cards",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#1a1a2e"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Celebrate Every Achievement"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Feature Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "external_image",
+          "label": "External image URL (optional)"
+        },
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "trophy", "label": "Trophy" },
+            { "value": "star", "label": "Star" },
+            { "value": "award", "label": "Award" },
+            { "value": "shield", "label": "Shield" }
+          ],
+          "default": "award"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Featured Collection"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "Button label",
+          "default": "Shop Now"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Cards",
+      "settings": {
+        "subheading": "Explore Our Collections",
+        "heading": "Celebrate Every Achievement"
+      },
+      "blocks": [
+        {
+          "type": "card",
+          "settings": {
+            "title": "Academics",
+            "description": "Browse our wide variety of academic awards and medals, perfect for any school event. Free engraving included for a personalized, professional touch.",
+            "icon": "star",
+            "button_label": "Shop Now",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/images/stencil/original/image-manager/academic-tts2.png"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Corporate Awards",
+            "description": "Shop our extensive selection of corporate awards that can be personalized for celebrating any goal or milestone. Our design team will work with you to make each award special.",
+            "icon": "award",
+            "button_label": "Shop Now",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/images/stencil/original/image-manager/awards-1-r.jpg"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "Custom Plaques & Frames",
+            "description": "Choose from a variety of customizable plaques and frames that can be personalized or branded just for you. Free engraving and design included!",
+            "icon": "trophy",
+            "button_label": "Shop Now",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/images/stencil/original/image-manager/c-3.png"
+          }
+        },
+        {
+          "type": "card",
+          "settings": {
+            "title": "First Responders & American Hero Awards",
+            "description": "Explore our collection of First Responders & American Hero Awards and honor those special few. Free engraving included to create a personalized tribute.",
+            "icon": "shield",
+            "button_label": "Shop Now",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/images/stencil/original/image-manager/c-2.png"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

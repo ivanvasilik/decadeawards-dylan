@@ -1,0 +1,42 @@
+{% comment %}
+  Perpetual Plates Selector - Decade Awards
+  Renders a dropdown for selecting number of perpetual plates.
+
+  Usage: {% render 'perpetual-plates', product: product %}
+
+  Metafields:
+  - perpetual.plate_options: list of plate count options
+{% endcomment %}
+
+{%- liquid
+  assign plate_options = product.metafields.perpetual.plate_options.value
+-%}
+
+{%- if plate_options != blank and plate_options.size > 0 -%}
+  <div class="product-customizer__perpetual-plates">
+    <label class="product-customizer__label" for="perpetual-plates-select">
+      Number of Perpetual Plates
+    </label>
+
+    <div class="product-customizer__select-wrapper">
+      <select
+        id="perpetual-plates-select"
+        name="properties[# of Perpetual Plates]"
+        class="product-customizer__select"
+      >
+        {%- for option in plate_options -%}
+          <option value="{{ option }}">{{ option }}</option>
+        {%- endfor -%}
+      </select>
+      <span class="product-customizer__select-icon">
+        <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </div>
+
+    <p class="product-customizer__help">
+      <small>Select how many individual plates you need for this perpetual plaque.</small>
+    </p>
+  </div>
+{%- endif -%}

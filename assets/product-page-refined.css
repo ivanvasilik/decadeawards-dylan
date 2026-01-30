@@ -1,0 +1,421 @@
+/* ============================================
+   DECADE AWARDS - UNIFIED DESIGN SYSTEM
+
+   Typography Scale (rem based on 16px):
+   - xs:    0.875rem (14px) - counters, hints
+   - sm:    1rem     (16px) - small text, pagination
+   - base:  1.125rem (18px) - body text, inputs
+   - lg:    1.25rem  (20px) - labels, emphasized text
+   - xl:    1.5rem   (24px) - section headings, buttons
+   - 2xl:   1.75rem  (28px) - subheadings
+   - 3xl:   2rem     (32px) - product title
+
+   Colors:
+   - Primary Blue: #21477e
+   - Primary Red:  #9a282c
+   - Text Dark:    #000000
+   - Text Medium:  #333333
+   - Text Light:   #666666
+   - Text Muted:   #999999
+   - Border:       rgba(0, 0, 0, 0.2)
+   ============================================ */
+
+:root {
+  /* Typography Scale */
+  --da-font-xs: 0.875rem;
+  --da-font-sm: 1rem;
+  --da-font-base: 1.125rem;
+  --da-font-lg: 1.25rem;
+  --da-font-xl: 1.5rem;
+  --da-font-2xl: 1.75rem;
+  --da-font-3xl: 2rem;
+
+  /* Element-specific font sizes (semantic aliases) */
+  --da-font-product-title: var(--da-font-3xl);
+  --da-font-section-heading: var(--da-font-xl);
+  --da-font-label: var(--da-font-lg);
+  --da-font-input: var(--da-font-base);
+  --da-font-body: var(--da-font-base);
+  --da-font-button: var(--da-font-xl);
+  --da-font-helper: var(--da-font-sm);
+  --da-font-counter: var(--da-font-xs);
+  --da-font-promo-bar: 1.5rem;
+  --da-font-nav-link: 1.8rem;
+
+  /* Font weights */
+  --da-weight-normal: 400;
+  --da-weight-medium: 500;
+  --da-weight-semibold: 600;
+  --da-weight-bold: 700;
+
+  /* Colors */
+  --da-blue: #21477e;
+  --da-blue-hover: #1a3a68;
+  --da-red: #9a282c;
+  --da-red-hover: #7d2024;
+  --da-text-dark: #000000;
+  --da-text-medium: #333333;
+  --da-text-light: #666666;
+  --da-text-muted: #999999;
+  --da-border: rgba(0, 0, 0, 0.2);
+  --da-border-light: rgba(0, 0, 0, 0.1);
+
+  /* Spacing */
+  --da-space-xs: 0.25rem;
+  --da-space-sm: 0.5rem;
+  --da-space-md: 0.75rem;
+  --da-space-lg: 1rem;
+  --da-space-xl: 1.5rem;
+
+  /* Border radius */
+  --da-radius-sm: 4px;
+  --da-radius-md: 6px;
+  --da-radius-lg: 8px;
+}
+
+/* ----------------------------------------
+   MAIN IMAGE - Fixed container
+   ---------------------------------------- */
+.product__media-item {
+  position: relative !important;
+  width: 100% !important;
+  height: 500px !important;
+  min-height: 500px !important;
+  max-height: 500px !important;
+  background: #f8f8f8 !important;
+  border-radius: var(--da-radius-lg) !important;
+  overflow: hidden !important;
+}
+
+.product__media-item .product-media-container {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.product__media-item .product__modal-opener {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.product__media-item .media {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  padding: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: visible !important;
+}
+
+.product__media-item img {
+  display: block !important;
+  position: static !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  transform: none !important;
+  margin: 0 !important;
+  padding: 5% !important;
+  box-sizing: border-box !important;
+}
+
+/* ----------------------------------------
+   THUMBNAILS
+   ---------------------------------------- */
+.thumbnail-list {
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.thumbnail-list__item {
+  width: 60px;
+  height: 60px;
+  flex: 0 0 60px;
+  border-radius: var(--da-radius-sm);
+  border: 2px solid #ddd;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.thumbnail-list__item:hover,
+.thumbnail-list__item:has([aria-current="true"]) {
+  border-color: var(--da-blue);
+}
+
+.thumbnail-list__item .thumbnail {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: none;
+}
+
+.thumbnail-list__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ----------------------------------------
+   PRODUCT TITLE
+   ---------------------------------------- */
+.product__title,
+.product__title h1,
+.product__title h2,
+.product__title .h1 {
+  font-family: 'Outfit', 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-size: var(--da-font-product-title) !important;
+  font-weight: var(--da-weight-semibold) !important;
+  color: var(--da-text-dark) !important;
+  margin: 0 0 var(--da-space-md) 0 !important;
+  line-height: 1.3 !important;
+}
+
+/* ----------------------------------------
+   PRICE
+   ---------------------------------------- */
+.price--large .price-item {
+  font-size: var(--da-font-xl);
+  font-weight: var(--da-weight-bold);
+}
+
+/* ----------------------------------------
+   BUTTONS - Add to Cart & Buy it Now
+   ---------------------------------------- */
+.product-form__buttons {
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 12px !important;
+  align-items: stretch !important;
+}
+
+.product-form__buttons > * {
+  flex: 1 1 0 !important;
+  min-width: 0 !important;
+}
+
+.product-form__buttons .shopify-payment-button {
+  flex: 1 1 0 !important;
+  min-width: 0 !important;
+}
+
+.product-form__submit,
+.shopify-payment-button__button,
+.shopify-payment-button .shopify-payment-button__button,
+.shopify-payment-button__button--unbranded,
+.shopify-payment-button__button--branded {
+  border-radius: var(--da-radius-md) !important;
+  font-family: 'Outfit', 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif !important;
+  font-weight: var(--da-weight-bold) !important;
+  font-size: var(--da-font-button) !important;
+  padding: 0 var(--da-space-xl) !important;
+  text-transform: none !important;
+  letter-spacing: 0.01em !important;
+  height: 56px !important;
+  min-height: 56px !important;
+  max-height: 56px !important;
+  line-height: 56px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  border: none !important;
+  cursor: pointer !important;
+  box-sizing: border-box !important;
+}
+
+.product-form__submit {
+  background: var(--da-blue) !important;
+  color: #ffffff !important;
+}
+
+.product-form__submit:hover {
+  background: var(--da-blue-hover) !important;
+  color: #ffffff !important;
+}
+
+.product-form__submit[disabled] {
+  background: #999 !important;
+  color: #fff !important;
+}
+
+.shopify-payment-button__button,
+.shopify-payment-button .shopify-payment-button__button,
+.shopify-payment-button__button--unbranded,
+.shopify-payment-button__button--branded {
+  background: var(--da-red) !important;
+  color: #ffffff !important;
+}
+
+.shopify-payment-button__button:hover,
+.shopify-payment-button .shopify-payment-button__button:hover {
+  background: var(--da-red-hover) !important;
+  color: #ffffff !important;
+}
+
+.shopify-payment-button__button span,
+.shopify-payment-button__button * {
+  font-family: inherit !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  letter-spacing: inherit !important;
+  color: inherit !important;
+}
+
+@media screen and (max-width: 749px) {
+  .product-form__buttons {
+    flex-direction: column !important;
+  }
+}
+
+/* ----------------------------------------
+   QUANTITY SELECTOR
+   ---------------------------------------- */
+.quantity__input,
+.quantity__button {
+  font-size: var(--da-font-xl) !important;
+  font-weight: var(--da-weight-semibold) !important;
+}
+
+.quantity__input {
+  min-width: 3rem !important;
+}
+
+.quantity__button svg {
+  width: 1.25rem !important;
+  height: 1.25rem !important;
+}
+
+/* ----------------------------------------
+   HIDE DESCRIPTION (shown in tabs)
+   ---------------------------------------- */
+.product__description {
+  display: none !important;
+}
+
+/* ----------------------------------------
+   COLLECTION PAGINATION
+   ---------------------------------------- */
+.pagination {
+  margin-top: 2rem;
+}
+
+.pagination__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--da-space-sm);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pagination__item {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 40px !important;
+  height: 40px !important;
+  padding: 0 var(--da-space-md) !important;
+  font-size: var(--da-font-sm) !important;
+  font-weight: var(--da-weight-medium) !important;
+  text-decoration: none !important;
+  border-radius: var(--da-radius-sm) !important;
+  transition: all 0.2s ease !important;
+  background: transparent !important;
+  color: var(--da-blue) !important;
+}
+
+.pagination__item.link:hover {
+  text-decoration: underline !important;
+  color: var(--da-blue-hover) !important;
+}
+
+.pagination__item--current,
+.pagination__item[aria-current="page"],
+.pagination__item[aria-disabled="true"] {
+  background: var(--da-blue) !important;
+  color: #ffffff !important;
+  font-weight: var(--da-weight-semibold) !important;
+  cursor: default !important;
+  text-decoration: none !important;
+}
+
+.pagination__item--current.light {
+  background: var(--da-blue) !important;
+  color: #ffffff !important;
+}
+
+span.pagination__item:not(.link):not(.pagination__item--current) {
+  background: transparent !important;
+  color: var(--da-text-light) !important;
+  cursor: default !important;
+}
+
+.pagination__item-arrow,
+.pagination__item--prev,
+.pagination__item--next {
+  background: transparent !important;
+  color: var(--da-blue) !important;
+}
+
+.pagination__item-arrow:hover {
+  background: #f0f4f8 !important;
+  text-decoration: none !important;
+}
+
+.pagination__item svg,
+.pagination__item .icon {
+  width: 1rem !important;
+  height: 1rem !important;
+  transform: rotate(-90deg);
+}
+
+/* ----------------------------------------
+   PROMO BAR - Top promotional bar
+   ---------------------------------------- */
+.promo-bar,
+.promo-bar__inner,
+.promo-bar__item,
+.promo-bar__text,
+.promo-bar__link,
+.promo-bar__phone-number,
+.promo-bar span,
+.promo-bar a {
+  font-size: var(--da-font-promo-bar, 1.5rem) !important;
+}
+
+/* ----------------------------------------
+   MAIN NAVIGATION - Header nav links
+   ---------------------------------------- */
+.header__menu-item,
+.header__menu-item.list-menu__item,
+.header__menu-item.list-menu__item.link,
+.header__menu-item > span,
+a.header__menu-item,
+.header__inline-menu .list-menu__item,
+.header__inline-menu .header__menu-item,
+header .list-menu__item.link {
+  font-size: var(--da-font-nav-link, 1.8rem) !important;
+}

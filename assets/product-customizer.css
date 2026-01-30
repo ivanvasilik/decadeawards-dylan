@@ -1,0 +1,400 @@
+/**
+ * Product Customizer Styles - Decade Awards
+ *
+ * Uses the unified design system from product-page-refined.css
+ * All font sizes reference CSS variables for consistency:
+ *
+ * --da-font-section-heading: 1.5rem (24px) - "Engraving", "Select Ribbon"
+ * --da-font-label: 1.25rem (20px) - field labels
+ * --da-font-input: 1.125rem (18px) - input text
+ * --da-font-helper: 1rem (16px) - helper text, hints
+ * --da-font-counter: 0.875rem (14px) - character counters
+ */
+
+/* ----------------------------------------
+   CONTAINER
+   ---------------------------------------- */
+.product-customizer {
+  margin-top: var(--da-space-lg, 1rem);
+  padding-top: var(--da-space-lg, 1rem);
+  border-top: 1px solid var(--da-border-light, rgba(0, 0, 0, 0.1));
+}
+
+.product-customizer > * + * {
+  margin-top: var(--da-space-md, 0.75rem);
+}
+
+/* ----------------------------------------
+   SECTION HEADINGS - "Engraving", "Select Ribbon", etc.
+   ---------------------------------------- */
+.product-customizer__section-title {
+  font-size: var(--da-font-section-heading, 1.5rem);
+  font-weight: var(--da-weight-bold, 700);
+  margin: 0 0 var(--da-space-sm, 0.5rem);
+  color: var(--da-text-dark, #000);
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: var(--da-space-sm, 0.5rem);
+}
+
+.product-customizer__meta {
+  font-size: var(--da-font-label, 1.25rem);
+  font-weight: var(--da-weight-normal, 400);
+  color: var(--da-text-light, #666);
+}
+
+/* ----------------------------------------
+   LABELS - Field labels, dropdown labels
+   ---------------------------------------- */
+.product-customizer__label {
+  display: block;
+  font-size: var(--da-font-section-heading, 1.5rem);
+  font-weight: var(--da-weight-bold, 700);
+  color: var(--da-text-dark, #000);
+  margin-bottom: var(--da-space-sm, 0.5rem);
+}
+
+.product-customizer__required {
+  color: var(--da-red, #9a282c);
+  margin-left: 2px;
+}
+
+/* ----------------------------------------
+   INPUT FIELDS - Text inputs, textareas
+   ---------------------------------------- */
+.product-customizer__input-wrapper {
+  position: relative;
+}
+
+.product-customizer__input,
+.product-customizer input[type="text"],
+.product-customizer input[type="email"],
+.product-customizer input[type="tel"],
+.product-customizer input[type="number"],
+.product-customizer textarea,
+.product-customizer .field__input {
+  width: 100%;
+  padding: var(--da-space-md, 0.75rem) var(--da-space-lg, 1rem) !important;
+  padding-right: 4.5rem !important;
+  font-size: 1.5rem !important;
+  font-family: inherit;
+  border: 1px solid var(--da-border, rgba(0, 0, 0, 0.2)) !important;
+  border-radius: var(--da-radius-sm, 4px) !important;
+  background: #fff !important;
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.product-customizer__input:focus,
+.product-customizer input:focus,
+.product-customizer textarea:focus {
+  outline: none;
+  border-color: var(--da-blue, #21477e) !important;
+}
+
+.product-customizer__input::placeholder,
+.product-customizer input::placeholder,
+.product-customizer textarea::placeholder {
+  color: var(--da-text-muted, #999);
+}
+
+/* ----------------------------------------
+   CHARACTER COUNTER
+   ---------------------------------------- */
+.product-customizer__char-count {
+  position: absolute;
+  right: var(--da-space-lg, 1rem);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--da-font-counter, 0.875rem);
+  color: var(--da-text-muted, #999);
+  pointer-events: none;
+}
+
+/* ----------------------------------------
+   ENGRAVING LINES
+   ---------------------------------------- */
+.product-customizer__lines {
+  display: flex;
+  flex-direction: column;
+  gap: var(--da-space-sm, 0.5rem);
+}
+
+/* Hide individual line labels since we have section header */
+.product-customizer__line-group .product-customizer__label {
+  display: none;
+}
+
+/* ----------------------------------------
+   SELECT DROPDOWNS - Ribbon selector, etc.
+   ---------------------------------------- */
+.product-customizer__select-wrapper {
+  position: relative;
+}
+
+.product-customizer__select,
+.product-customizer select {
+  width: 100%;
+  padding: var(--da-space-md, 0.75rem) 2.5rem var(--da-space-md, 0.75rem) var(--da-space-lg, 1rem) !important;
+  font-size: var(--da-font-input, 1.125rem) !important;
+  font-family: inherit;
+  border: 1px solid var(--da-border, rgba(0, 0, 0, 0.2)) !important;
+  border-radius: var(--da-radius-sm, 4px) !important;
+  background: #fff !important;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: border-color 0.2s ease;
+}
+
+.product-customizer__select:focus,
+.product-customizer select:focus {
+  outline: none;
+  border-color: var(--da-blue, #21477e) !important;
+}
+
+.product-customizer__select-icon {
+  position: absolute;
+  right: var(--da-space-md, 0.75rem);
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--da-text-light, #666);
+}
+
+/* ----------------------------------------
+   RADIO BUTTONS - Colorfill options
+   ---------------------------------------- */
+.product-customizer__fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.product-customizer__radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--da-space-sm, 0.5rem);
+}
+
+.product-customizer__radio-label {
+  display: flex;
+  align-items: center;
+  gap: var(--da-space-xs, 0.25rem);
+  padding: var(--da-space-sm, 0.5rem) var(--da-space-md, 0.75rem);
+  border: 1px solid var(--da-border-light, rgba(0, 0, 0, 0.15));
+  border-radius: var(--da-radius-sm, 4px);
+  cursor: pointer;
+  font-size: var(--da-font-input, 1.125rem);
+  transition: all 0.15s ease;
+}
+
+.product-customizer__radio-label:hover {
+  border-color: var(--da-blue, #21477e);
+}
+
+.product-customizer__radio {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.product-customizer__radio:checked + .product-customizer__radio-custom {
+  border-color: var(--da-blue, #21477e);
+  background: var(--da-blue, #21477e);
+}
+
+.product-customizer__radio-custom {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--da-border, rgba(0, 0, 0, 0.25));
+  border-radius: 50%;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+
+.product-customizer__radio-text {
+  font-size: var(--da-font-input, 1.125rem);
+}
+
+/* ----------------------------------------
+   COLOR SWATCHES
+   ---------------------------------------- */
+.product-customizer__color-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.product-customizer__color-swatch--gold { background: linear-gradient(135deg, #ffd700, #b8860b); }
+.product-customizer__color-swatch--silver { background: linear-gradient(135deg, #c0c0c0, #808080); }
+.product-customizer__color-swatch--bronze { background: linear-gradient(135deg, #cd7f32, #8b4513); }
+.product-customizer__color-swatch--black { background: #000; }
+.product-customizer__color-swatch--white { background: #fff; border: 1px solid rgba(0,0,0,0.2); }
+.product-customizer__color-swatch--none { background: transparent; border: 1px dashed rgba(0,0,0,0.3); }
+
+/* ----------------------------------------
+   FILE UPLOAD
+   ---------------------------------------- */
+.product-customizer__file-input {
+  position: absolute;
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+}
+
+.product-customizer__upload-row {
+  display: flex;
+  align-items: center;
+  gap: var(--da-space-md, 0.75rem);
+}
+
+.product-customizer__upload-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--da-space-sm, 0.5rem);
+  padding: var(--da-space-sm, 0.5rem) var(--da-space-lg, 1rem);
+  background: #f5f5f5;
+  border: 1px solid var(--da-border-light, rgba(0, 0, 0, 0.15));
+  border-radius: var(--da-radius-sm, 4px);
+  cursor: pointer;
+  font-size: var(--da-font-input, 1.125rem);
+  font-weight: var(--da-weight-medium, 500);
+  color: var(--da-text-medium, #333);
+  transition: all 0.15s ease;
+}
+
+.product-customizer__upload-btn:hover {
+  background: #eee;
+  border-color: var(--da-blue, #21477e);
+}
+
+.product-customizer__upload-hint {
+  font-size: var(--da-font-helper, 1rem);
+  color: var(--da-text-muted, #888);
+}
+
+/* ----------------------------------------
+   UPLOAD SUCCESS STATE
+   ---------------------------------------- */
+.product-customizer__upload-success {
+  display: flex;
+  align-items: center;
+  gap: var(--da-space-sm, 0.5rem);
+  padding: var(--da-space-sm, 0.5rem) var(--da-space-md, 0.75rem);
+  background: rgba(16, 185, 129, 0.1);
+  border-radius: var(--da-radius-sm, 4px);
+  font-size: var(--da-font-helper, 1rem);
+  color: #065f46;
+}
+
+.product-customizer__upload-success svg {
+  color: #10b981;
+  flex-shrink: 0;
+}
+
+.product-customizer__remove-file {
+  margin-left: auto;
+  padding: var(--da-space-xs, 0.25rem) var(--da-space-sm, 0.5rem);
+  font-size: var(--da-font-counter, 0.875rem);
+  color: var(--da-red, #dc3545);
+  background: transparent;
+  border: 1px solid var(--da-red, #dc3545);
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.product-customizer__remove-file:hover {
+  background: var(--da-red, #dc3545);
+  color: #fff;
+}
+
+/* ----------------------------------------
+   TEXTAREA - Comments field
+   ---------------------------------------- */
+.product-customizer__textarea {
+  width: 100%;
+  padding: var(--da-space-md, 0.75rem) var(--da-space-lg, 1rem);
+  font-size: var(--da-font-input, 1.125rem);
+  font-family: inherit;
+  border: 1px solid var(--da-border, rgba(0, 0, 0, 0.2));
+  border-radius: var(--da-radius-sm, 4px);
+  resize: vertical;
+  min-height: 80px;
+}
+
+.product-customizer__textarea:focus {
+  outline: none;
+  border-color: var(--da-blue, #21477e);
+}
+
+/* ----------------------------------------
+   NOTICES
+   ---------------------------------------- */
+.product-customizer__notice {
+  padding: var(--da-space-md, 0.625rem) var(--da-space-lg, 1rem);
+  border-radius: var(--da-radius-sm, 4px);
+  font-size: var(--da-font-helper, 1rem);
+}
+
+.product-customizer__notice--info {
+  background: rgba(33, 71, 126, 0.08);
+  color: var(--da-blue, #21477e);
+}
+
+/* ----------------------------------------
+   LEGACY HEADER SUPPORT
+   ---------------------------------------- */
+.product-customizer__header {
+  margin-bottom: var(--da-space-sm, 0.5rem);
+}
+
+.product-customizer__title {
+  font-size: var(--da-font-section-heading, 1.5rem);
+  font-weight: var(--da-weight-bold, 700);
+  margin: 0;
+  color: var(--da-text-dark, #000);
+}
+
+.product-customizer__subtitle {
+  font-size: var(--da-font-label, 1.25rem);
+  color: var(--da-text-light, #666);
+  margin: var(--da-space-xs, 0.25rem) 0 0;
+}
+
+/* ----------------------------------------
+   RIBBON PREVIEW
+   ---------------------------------------- */
+.product-customizer__ribbon-preview {
+  margin-top: var(--da-space-sm, 0.5rem);
+}
+
+.product-customizer__preview-label {
+  font-size: var(--da-font-helper, 1rem);
+  color: var(--da-text-light, #666);
+  margin: 0;
+}
+
+/* ----------------------------------------
+   MOBILE ADJUSTMENTS
+   ---------------------------------------- */
+@media (max-width: 640px) {
+  .product-customizer__radio-group {
+    gap: var(--da-space-xs, 0.375rem);
+  }
+
+  .product-customizer__upload-row {
+    flex-wrap: wrap;
+  }
+
+  .product-customizer__label {
+    font-size: var(--da-font-label, 1.25rem);
+  }
+
+  .product-customizer__section-title {
+    font-size: var(--da-font-label, 1.25rem);
+  }
+}

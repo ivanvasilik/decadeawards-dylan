@@ -1,0 +1,120 @@
+{{ 'sidebar-navigation.css' | asset_url | stylesheet_tag }}
+
+<aside class="sidebar-nav" id="sidebar-navigation">
+  {%- comment -%} Shop By Category {%- endcomment -%}
+  <div class="sidebar-nav__section">
+    <button class="sidebar-nav__heading" aria-expanded="true" aria-controls="nav-category">
+      <span class="sidebar-nav__heading-text">Shop By Category</span>
+      <span class="sidebar-nav__toggle">
+        <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </button>
+    <ul class="sidebar-nav__list" id="nav-category">
+      <li><a href="/collections/fantasy-football">Fantasy Football</a></li>
+      <li><a href="/collections/last-place-trophies">Last Place Trophies</a></li>
+      <li><a href="/collections/trophies">Trophies</a></li>
+      <li><a href="/collections/medals">Medals</a></li>
+      <li><a href="/collections/corporate-awards">Corporate Awards</a></li>
+      <li><a href="/collections/plaques">Plaques</a></li>
+      <li><a href="/collections/academic">Academic</a></li>
+      <li><a href="/collections/perpetual-trophies">Perpetual Trophies</a></li>
+      <li><a href="/collections/gifts-glassware">Personalized Gifts</a></li>
+      <li><a href="/collections/3d-novelty-awards">3D &amp; Novelty Awards</a></li>
+      <li><a href="/collections/engraved-plates">Engraved Plates</a></li>
+      <li><a href="/collections/lapel-pins">Lapel &amp; Chenille Pins</a></li>
+      <li><a href="/collections/picture-frames">Picture Frames</a></li>
+      <li><a href="/collections/ribbons">Ribbons &amp; Rosettes</a></li>
+    </ul>
+  </div>
+
+  {%- comment -%} Shop By Sport {%- endcomment -%}
+  <div class="sidebar-nav__section">
+    <button class="sidebar-nav__heading" aria-expanded="true" aria-controls="nav-sport">
+      <span class="sidebar-nav__heading-text">Shop By Sport</span>
+      <span class="sidebar-nav__toggle">
+        <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </button>
+    <ul class="sidebar-nav__list" id="nav-sport">
+      <li><a href="/collections/baseball">Baseball</a></li>
+      <li><a href="/collections/basketball">Basketball</a></li>
+      <li><a href="/collections/bowling">Bowling</a></li>
+      <li><a href="/collections/cheerleading">Cheer</a></li>
+      <li><a href="/collections/football">Football</a></li>
+      <li><a href="/collections/golf">Golf</a></li>
+      <li><a href="/collections/gymnastics">Gymnastics</a></li>
+      <li><a href="/collections/hockey">Hockey</a></li>
+      <li><a href="/collections/lacrosse">Lacrosse</a></li>
+      <li><a href="/collections/martial-arts">Martial Arts</a></li>
+      <li><a href="/collections/pickleball">Pickleball</a></li>
+      <li><a href="/collections/racing">Racing</a></li>
+      <li><a href="/collections/soccer">Soccer</a></li>
+      <li><a href="/collections/softball">Softball</a></li>
+      <li><a href="/collections/swimming">Swimming</a></li>
+      <li><a href="/collections/tennis">Tennis</a></li>
+      <li><a href="/collections/track-field">Track &amp; Field</a></li>
+      <li><a href="/collections/volleyball">Volleyball</a></li>
+      <li><a href="/collections/wrestling">Wrestling</a></li>
+    </ul>
+  </div>
+
+  {%- comment -%} Help & Info {%- endcomment -%}
+  <div class="sidebar-nav__section">
+    <button class="sidebar-nav__heading sidebar-nav__heading--secondary" aria-expanded="false" aria-controls="nav-help">
+      <span class="sidebar-nav__heading-text">Help &amp; Info</span>
+      <span class="sidebar-nav__toggle">
+        <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </button>
+    <ul class="sidebar-nav__list sidebar-nav__list--collapsed" id="nav-help">
+      <li><a href="/pages/about-us">About Us</a></li>
+      <li><a href="/pages/contact">Contact Us</a></li>
+      <li><a href="/pages/shipping">Shipping Info</a></li>
+      <li><a href="/pages/faq">FAQ</a></li>
+      <li><a href="/policies/refund-policy">Returns &amp; Refunds</a></li>
+    </ul>
+  </div>
+</aside>
+
+<script>
+  // Toggle sidebar sections
+  document.querySelectorAll('.sidebar-nav__heading').forEach(button => {
+    button.addEventListener('click', () => {
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', !expanded);
+      const list = document.getElementById(button.getAttribute('aria-controls'));
+      if (list) {
+        list.classList.toggle('sidebar-nav__list--collapsed', expanded);
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Sidebar Navigation",
+  "tag": "section",
+  "class": "sidebar-navigation-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Sidebar Navigation"
+    },
+    {
+      "type": "paragraph",
+      "content": "This sidebar displays Shop by Category and Shop by Sport navigation."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sidebar Navigation"
+    }
+  ]
+}
+{% endschema %}

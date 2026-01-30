@@ -1,0 +1,228 @@
+{% comment %}
+  360 Spin Viewer - Decade Awards
+  Shows a button that opens 3D preview in a modal (lazy loaded for performance)
+
+  Usage: {% render 'spin360-viewer', product: product %}
+
+  Metafields:
+  - custom.spin360_code: ArqSpin spin ID
+{% endcomment %}
+
+{%- liquid
+  assign spin_code = product.metafields.custom.spin360_code.value
+-%}
+
+{%- if spin_code != blank -%}
+  <div class="spin360-preview">
+    <button
+      type="button"
+      class="spin360-preview__button"
+      data-spin-code="{{ spin_code }}"
+      aria-label="Open 3D Preview"
+    >
+      <svg class="spin360-preview__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+        <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+        <line x1="12" y1="22.08" x2="12" y2="12"/>
+      </svg>
+      <span class="spin360-preview__text">3D Preview</span>
+    </button>
+  </div>
+
+  <!-- Modal - appended to body via JS for proper stacking -->
+  <template id="spin360-modal-template-{{ product.id }}">
+    <div class="spin360-modal-overlay" style="
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 2147483646;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
+    ">
+      <div class="spin360-modal-box" style="
+        background: #fff;
+        border-radius: 12px;
+        width: 100%;
+        max-width: 700px;
+        height: 70vh;
+        max-height: 600px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      ">
+        <div style="
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 16px 20px;
+          background: #21477e;
+          color: #fff;
+        ">
+          <span style="font-size: 1.25rem; font-weight: 600;">3D Preview</span>
+          <button type="button" class="spin360-close-btn" style="
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+          ">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+        <div class="spin360-content-area" style="flex: 1 1 auto; min-height: 0; background: #f5f5f5; position: relative; display: flex; align-items: center; justify-content: center;">
+          <div class="spin360-loader" style="
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #666;
+            z-index: 1;
+          ">Loading 3D Preview...</div>
+          <div class="spin360-iframe-wrap" data-url="https://spins0.arqspin.com/iframe.html?spin={{ spin_code }}&is=-0.16" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; right: 0; bottom: 0;"></div>
+        </div>
+        <div style="padding: 12px; text-align: center; background: #f9f9f9; border-top: 1px solid #eee; color: #666; font-size: 0.9rem;">
+          Drag to rotate • Scroll to zoom
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <style>
+    .spin360-preview {
+      display: block;
+      margin-top: 12px;
+      width: 100%;
+    }
+
+    .spin360-preview__button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      height: 60px;
+      background: linear-gradient(135deg, #21477e 0%, #1a3a68 100%);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .spin360-preview__button:hover {
+      background: linear-gradient(135deg, #1a3a68 0%, #0f2847 100%);
+    }
+
+    .spin360-preview__icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    .spin360-preview__text {
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .spin360-modal-overlay iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .spin360-close-btn:hover {
+      background: rgba(255,255,255,0.3) !important;
+    }
+
+    @media (max-width: 600px) {
+      .spin360-modal-overlay {
+        padding: 10px !important;
+      }
+      .spin360-modal-box {
+        max-height: 90vh !important;
+      }
+    }
+  </style>
+
+  <script>
+    (function() {
+      const btn = document.querySelector('.spin360-preview__button[data-spin-code="{{ spin_code }}"]');
+      const template = document.getElementById('spin360-modal-template-{{ product.id }}');
+      if (!btn || !template) return;
+
+      let modalEl = null;
+      let iframeLoaded = false;
+
+      // Move button under thumbnails
+      const preview = btn.closest('.spin360-preview');
+      const thumbs = document.querySelector('.thumbnail-slider, .thumbnail-list, slider-component.thumbnail-slider');
+      const mediaCol = document.querySelector('.product__media-gallery, .product__media-wrapper, .product__column--media');
+
+      if (preview && thumbs && thumbs.parentNode) {
+        thumbs.parentNode.insertBefore(preview, thumbs.nextSibling);
+      } else if (preview && mediaCol) {
+        mediaCol.appendChild(preview);
+      }
+
+      function openModal() {
+        // Clone template and append to body
+        modalEl = template.content.cloneNode(true).firstElementChild;
+        document.body.appendChild(modalEl);
+        document.body.style.overflow = 'hidden';
+
+        // Load iframe
+        if (!iframeLoaded) {
+          const wrap = modalEl.querySelector('.spin360-iframe-wrap');
+          const loader = modalEl.querySelector('.spin360-loader');
+          const iframe = document.createElement('iframe');
+          iframe.src = wrap.dataset.url;
+          iframe.allowFullscreen = true;
+          iframe.onload = () => { if (loader) loader.style.display = 'none'; };
+          wrap.appendChild(iframe);
+          iframeLoaded = true;
+        }
+
+        // Close handlers
+        modalEl.addEventListener('click', (e) => {
+          if (e.target === modalEl) closeModal();
+        });
+        modalEl.querySelector('.spin360-close-btn').addEventListener('click', closeModal);
+
+        document.addEventListener('keydown', escHandler);
+      }
+
+      function closeModal() {
+        if (modalEl) {
+          modalEl.remove();
+          modalEl = null;
+        }
+        document.body.style.overflow = '';
+        document.removeEventListener('keydown', escHandler);
+      }
+
+      function escHandler(e) {
+        if (e.key === 'Escape') closeModal();
+      }
+
+      btn.addEventListener('click', openModal);
+    })();
+  </script>
+{%- endif -%}

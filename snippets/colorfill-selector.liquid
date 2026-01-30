@@ -1,0 +1,60 @@
+{% comment %}
+  Colorfill Selector - Decade Awards
+  Renders radio buttons for selecting text colorfill options.
+
+  Usage: {% render 'colorfill-selector', product: product %}
+
+  Metafields:
+  - colorfill.options: list of colorfill choices (e.g., None, Gold, Silver, Bronze)
+  - colorfill.label: label text
+{% endcomment %}
+
+{%- liquid
+  assign colorfill_options = product.metafields.colorfill.options.value
+  assign colorfill_label = product.metafields.colorfill.label.value | default: 'Text Colorfill'
+-%}
+
+{%- if colorfill_options != blank and colorfill_options.size > 0 -%}
+  <div class="product-customizer__colorfill-selector">
+    <fieldset class="product-customizer__fieldset">
+      <legend class="product-customizer__label">
+        {{ colorfill_label }}
+      </legend>
+
+      <div class="product-customizer__radio-group">
+        {%- for option in colorfill_options -%}
+          {%- assign option_id = 'colorfill-' | append: forloop.index -%}
+          {%- assign option_lower = option | downcase -%}
+
+          <label class="product-customizer__radio-label" for="{{ option_id }}">
+            <input
+              type="radio"
+              id="{{ option_id }}"
+              name="properties[{{ colorfill_label }}]"
+              value="{{ option }}"
+              class="product-customizer__radio"
+              {% if forloop.first %}checked{% endif %}
+            >
+            <span class="product-customizer__radio-custom">
+              {%- case option_lower -%}
+                {%- when 'gold' or 'gold (opaque)' -%}
+                  <span class="product-customizer__color-swatch product-customizer__color-swatch--gold"></span>
+                {%- when 'silver' or 'silver (opaque)' -%}
+                  <span class="product-customizer__color-swatch product-customizer__color-swatch--silver"></span>
+                {%- when 'bronze' or 'bronze (opaque)' -%}
+                  <span class="product-customizer__color-swatch product-customizer__color-swatch--bronze"></span>
+                {%- when 'black' or 'black (opaque)' -%}
+                  <span class="product-customizer__color-swatch product-customizer__color-swatch--black"></span>
+                {%- when 'white' or 'white (opaque)' -%}
+                  <span class="product-customizer__color-swatch product-customizer__color-swatch--white"></span>
+                {%- when 'none' or 'none - white etch only' or 'choose options' -%}
+                  <span class="product-customizer__color-swatch product-customizer__color-swatch--none"></span>
+              {%- endcase -%}
+            </span>
+            <span class="product-customizer__radio-text">{{ option }}</span>
+          </label>
+        {%- endfor -%}
+      </div>
+    </fieldset>
+  </div>
+{%- endif -%}

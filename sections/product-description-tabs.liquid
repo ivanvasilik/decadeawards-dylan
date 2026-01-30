@@ -1,0 +1,18 @@
+{%- comment -%}
+  Product Description Tabs Section
+  Place this section after main-product in the product template
+{%- endcomment -%}
+
+<div class="product-description-tabs-section page-width">
+  {% render 'product-tabs', product: product %}
+</div>
+
+{% schema %}
+{
+  "name": "Product Description Tabs",
+  "tag": "section",
+  "class": "section-product-tabs",
+  "settings": [],
+  "templates": ["product"]
+}
+{% endschema %}

@@ -1,0 +1,45 @@
+{
+  "sections": {
+    "collection-sidebar": {
+      "type": "collection-with-sidebar",
+      "settings": {
+        "products_per_page": 12,
+        "columns_desktop": 3,
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false
+      },
+      "blocks": {
+        "fantasy_football": {
+          "type": "fantasy_football",
+          "settings": {
+            "heading": "Shop Fantasy Football",
+            "heading_color": "#21477e",
+            "expanded_default": true
+          }
+        },
+        "category": {
+          "type": "category",
+          "settings": {
+            "heading": "Shop Category",
+            "heading_color": "#9a282c",
+            "expanded_default": false
+          }
+        },
+        "sport": {
+          "type": "sport",
+          "settings": {
+            "heading": "Shop By Sport",
+            "heading_color": "#9a282c",
+            "expanded_default": false
+          }
+        }
+      },
+      "block_order": ["fantasy_football", "category", "sport"]
+    }
+  },
+  "order": [
+    "collection-sidebar"
+  ]
+}

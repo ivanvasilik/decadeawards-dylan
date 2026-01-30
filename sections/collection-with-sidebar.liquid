@@ -1,0 +1,476 @@
+{%- comment -%}
+  Collection page with sidebar navigation
+  Two-column layout: sidebar on left, products on right
+  Sidebar menus are configurable blocks that can be reordered
+{%- endcomment -%}
+
+{{ 'sidebar-navigation.css' | asset_url | stylesheet_tag }}
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .collection-sidebar-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 0 1.5rem 3rem;
+  }
+
+  .collection-sidebar-layout__sidebar {
+    align-self: start;
+  }
+
+  .collection-sidebar-layout__main {
+    min-width: 0;
+  }
+
+  @media screen and (max-width: 989px) {
+    .collection-sidebar-layout {
+      grid-template-columns: 1fr;
+      padding: 0 1rem 2rem;
+    }
+
+    .collection-sidebar-layout__sidebar {
+      display: none;
+    }
+
+    .collection-sidebar-layout__sidebar--mobile-visible {
+      display: block;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .collection-header {
+    padding: 2rem 1.5rem;
+    max-width: var(--page-width);
+    margin: 0 auto;
+  }
+
+  .collection-header__title {
+    margin: 0 0 0.5rem;
+    font-size: 2rem;
+  }
+
+  .collection-header__description {
+    margin: 0;
+    color: rgba(var(--color-foreground), 0.7);
+  }
+
+  .mobile-filter-toggle {
+    display: none;
+    width: 100%;
+    padding: 0.875rem 1rem;
+    margin-bottom: 1rem;
+    background: #21477e;
+    color: #fff;
+    border: none;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .mobile-filter-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+  }
+
+  /* Product Grid Styles */
+  .collection-products {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns_desktop }}, 1fr);
+    gap: 1.5rem;
+  }
+
+  @media screen and (max-width: 989px) {
+    .collection-products {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+  }
+
+  .collection-products__empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem 1rem;
+  }
+
+  /* Pagination */
+  .collection-pagination {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Product Count & Sort */
+  .collection-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .collection-toolbar__count {
+    color: rgba(var(--color-foreground), 0.7);
+    font-size: 0.875rem;
+  }
+
+  .collection-toolbar__sort {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .collection-toolbar__sort select {
+    padding: 0.5rem 2rem 0.5rem 0.75rem;
+    border: 1px solid rgba(var(--color-foreground), 0.2);
+    border-radius: 4px;
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23333' d='M1 1.5L6 6.5L11 1.5'/%3E%3C/svg%3E") no-repeat right 0.75rem center;
+    appearance: none;
+    cursor: pointer;
+  }
+
+  /* Dynamic block heading colors */
+  {%- for block in section.blocks -%}
+    .sidebar-nav__heading--block-{{ block.id }} {
+      background: {{ block.settings.heading_color }};
+    }
+    .sidebar-nav__heading--block-{{ block.id }}:hover {
+      background: {{ block.settings.heading_color | color_darken: 10 }};
+    }
+  {%- endfor -%}
+{%- endstyle -%}
+
+{%- comment -%} Collection Header {%- endcomment -%}
+<div class="collection-header">
+  <h1 class="collection-header__title">{{ collection.title }}</h1>
+  {%- if collection.description != blank -%}
+    <p class="collection-header__description">{{ collection.description }}</p>
+  {%- endif -%}
+</div>
+
+{%- comment -%} Mobile Filter Toggle {%- endcomment -%}
+<div style="max-width: var(--page-width); margin: 0 auto; padding: 0 1.5rem;">
+  <button class="mobile-filter-toggle" id="mobile-sidebar-toggle" aria-expanded="false">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M3 5H17M3 10H17M3 15H17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    Browse Categories
+  </button>
+</div>
+
+{%- comment -%} Main Layout {%- endcomment -%}
+<div class="collection-sidebar-layout">
+  {%- comment -%} Sidebar {%- endcomment -%}
+  <aside class="collection-sidebar-layout__sidebar" id="collection-sidebar">
+    <div class="sidebar-nav">
+      {%- for block in section.blocks -%}
+        <div class="sidebar-nav__section" {{ block.shopify_attributes }}>
+          {%- case block.type -%}
+
+            {%- when 'fantasy_football' -%}
+              <button class="sidebar-nav__heading sidebar-nav__heading--block-{{ block.id }}" aria-expanded="{{ block.settings.expanded_default }}" aria-controls="nav-{{ block.id }}">
+                <span class="sidebar-nav__heading-text">{{ block.settings.heading }}</span>
+                <span class="sidebar-nav__toggle">
+                  <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+              <ul class="sidebar-nav__list{% unless block.settings.expanded_default %} sidebar-nav__list--collapsed{% endunless %}" id="nav-{{ block.id }}">
+                <li><a href="/collections/fantasy-football-champion-trophies" {% if collection.handle == 'fantasy-football-champion-trophies' %}class="active"{% endif %}>Fantasy Football CHAMPION Trophies</a></li>
+                <li><a href="/collections/fantasy-football-loser-trophies" {% if collection.handle == 'fantasy-football-loser-trophies' %}class="active"{% endif %}>Fantasy Football LOSER Trophies</a></li>
+                <li><a href="/collections/fantasy-football-medals" {% if collection.handle == 'fantasy-football-medals' %}class="active"{% endif %}>Fantasy Football Medals</a></li>
+                <li><a href="/collections/fantasy-football-perpetual-trophies" {% if collection.handle == 'fantasy-football-perpetual-trophies' %}class="active"{% endif %}>Fantasy Football Perpetual Trophies</a></li>
+                <li><a href="/collections/fantasy-football-rings" {% if collection.handle == 'fantasy-football-rings' %}class="active"{% endif %}>Fantasy Football Rings</a></li>
+              </ul>
+
+            {%- when 'category' -%}
+              <button class="sidebar-nav__heading sidebar-nav__heading--block-{{ block.id }}" aria-expanded="{{ block.settings.expanded_default }}" aria-controls="nav-{{ block.id }}">
+                <span class="sidebar-nav__heading-text">{{ block.settings.heading }}</span>
+                <span class="sidebar-nav__toggle">
+                  <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+              <ul class="sidebar-nav__list{% unless block.settings.expanded_default %} sidebar-nav__list--collapsed{% endunless %}" id="nav-{{ block.id }}">
+                <li><a href="/collections/trophies" {% if collection.handle == 'trophies' %}class="active"{% endif %}>Trophies</a></li>
+                <li><a href="/collections/medals" {% if collection.handle == 'medals' %}class="active"{% endif %}>Medals</a></li>
+                <li><a href="/collections/perpetual-trophies" {% if collection.handle == 'perpetual-trophies' %}class="active"{% endif %}>Perpetual Trophies</a></li>
+                <li><a href="/collections/plaques" {% if collection.handle == 'plaques' %}class="active"{% endif %}>Plaques</a></li>
+                <li><a href="/collections/corporate-awards" {% if collection.handle == 'corporate-awards' %}class="active"{% endif %}>Corporate Awards</a></li>
+                <li><a href="/collections/academic" {% if collection.handle == 'academic' %}class="active"{% endif %}>Academic</a></li>
+                <li><a href="/collections/gifts-glassware" {% if collection.handle == 'gifts-glassware' %}class="active"{% endif %}>Personalized Gifts</a></li>
+                <li><a href="/collections/engraved-plates" {% if collection.handle == 'engraved-plates' %}class="active"{% endif %}>Engraved Plates</a></li>
+                <li><a href="/collections/lapel-pins" {% if collection.handle == 'lapel-pins' %}class="active"{% endif %}>Lapel &amp; Chenille Pins</a></li>
+                <li><a href="/collections/picture-frames" {% if collection.handle == 'picture-frames' %}class="active"{% endif %}>Picture Frames</a></li>
+                <li><a href="/collections/ribbons" {% if collection.handle == 'ribbons' %}class="active"{% endif %}>Ribbons &amp; Rosettes</a></li>
+                <li><a href="/collections/last-place-trophies" {% if collection.handle == 'last-place-trophies' %}class="active"{% endif %}>Last Place Trophies</a></li>
+              </ul>
+
+            {%- when 'sport' -%}
+              <button class="sidebar-nav__heading sidebar-nav__heading--block-{{ block.id }}" aria-expanded="{{ block.settings.expanded_default }}" aria-controls="nav-{{ block.id }}">
+                <span class="sidebar-nav__heading-text">{{ block.settings.heading }}</span>
+                <span class="sidebar-nav__toggle">
+                  <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </button>
+              <ul class="sidebar-nav__list{% unless block.settings.expanded_default %} sidebar-nav__list--collapsed{% endunless %}" id="nav-{{ block.id }}">
+                <li><a href="/collections/baseball" {% if collection.handle == 'baseball' %}class="active"{% endif %}>Baseball</a></li>
+                <li><a href="/collections/basketball" {% if collection.handle == 'basketball' %}class="active"{% endif %}>Basketball</a></li>
+                <li><a href="/collections/bowling" {% if collection.handle == 'bowling' %}class="active"{% endif %}>Bowling</a></li>
+                <li><a href="/collections/cheerleading" {% if collection.handle == 'cheerleading' %}class="active"{% endif %}>Cheerleading</a></li>
+                <li><a href="/collections/football" {% if collection.handle == 'football' %}class="active"{% endif %}>Football</a></li>
+                <li><a href="/collections/golf" {% if collection.handle == 'golf' %}class="active"{% endif %}>Golf</a></li>
+                <li><a href="/collections/gymnastics" {% if collection.handle == 'gymnastics' %}class="active"{% endif %}>Gymnastics</a></li>
+                <li><a href="/collections/hockey" {% if collection.handle == 'hockey' %}class="active"{% endif %}>Hockey</a></li>
+                <li><a href="/collections/lacrosse" {% if collection.handle == 'lacrosse' %}class="active"{% endif %}>Lacrosse</a></li>
+                <li><a href="/collections/martial-arts" {% if collection.handle == 'martial-arts' %}class="active"{% endif %}>Martial Arts</a></li>
+                <li><a href="/collections/pickleball" {% if collection.handle == 'pickleball' %}class="active"{% endif %}>Pickleball</a></li>
+                <li><a href="/collections/racing" {% if collection.handle == 'racing' %}class="active"{% endif %}>Racing</a></li>
+                <li><a href="/collections/soccer" {% if collection.handle == 'soccer' %}class="active"{% endif %}>Soccer</a></li>
+                <li><a href="/collections/softball" {% if collection.handle == 'softball' %}class="active"{% endif %}>Softball</a></li>
+                <li><a href="/collections/swimming" {% if collection.handle == 'swimming' %}class="active"{% endif %}>Swimming</a></li>
+                <li><a href="/collections/tennis" {% if collection.handle == 'tennis' %}class="active"{% endif %}>Tennis</a></li>
+                <li><a href="/collections/track-field" {% if collection.handle == 'track-field' %}class="active"{% endif %}>Track &amp; Field</a></li>
+                <li><a href="/collections/volleyball" {% if collection.handle == 'volleyball' %}class="active"{% endif %}>Volleyball</a></li>
+                <li><a href="/collections/wrestling" {% if collection.handle == 'wrestling' %}class="active"{% endif %}>Wrestling</a></li>
+              </ul>
+
+          {%- endcase -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </aside>
+
+  {%- comment -%} Product Grid {%- endcomment -%}
+  <div class="collection-sidebar-layout__main">
+    {%- comment -%} Toolbar {%- endcomment -%}
+    <div class="collection-toolbar">
+      <span class="collection-toolbar__count">
+        {{ collection.products_count }} {{ collection.products_count | pluralize: 'product', 'products' }}
+      </span>
+      <div class="collection-toolbar__sort">
+        <label for="sort-by">Sort by:</label>
+        <select id="sort-by" onchange="window.location.href = this.value;">
+          {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+          <option value="{{ collection.url }}?sort_by=best-selling" {% if sort_by == 'best-selling' %}selected{% endif %}>Best Selling</option>
+          <option value="{{ collection.url }}?sort_by=title-ascending" {% if sort_by == 'title-ascending' %}selected{% endif %}>A-Z</option>
+          <option value="{{ collection.url }}?sort_by=title-descending" {% if sort_by == 'title-descending' %}selected{% endif %}>Z-A</option>
+          <option value="{{ collection.url }}?sort_by=price-ascending" {% if sort_by == 'price-ascending' %}selected{% endif %}>Price: Low to High</option>
+          <option value="{{ collection.url }}?sort_by=price-descending" {% if sort_by == 'price-descending' %}selected{% endif %}>Price: High to Low</option>
+          <option value="{{ collection.url }}?sort_by=created-descending" {% if sort_by == 'created-descending' %}selected{% endif %}>Newest</option>
+        </select>
+      </div>
+    </div>
+
+    {%- comment -%} Products {%- endcomment -%}
+    {%- paginate collection.products by section.settings.products_per_page -%}
+      {%- if collection.products.size > 0 -%}
+        <div class="collection-products">
+          {%- for product in collection.products -%}
+            <div class="collection-products__item">
+              {% render 'card-product',
+                card_product: product,
+                media_aspect_ratio: section.settings.image_ratio,
+                show_secondary_image: section.settings.show_secondary_image,
+                show_vendor: section.settings.show_vendor,
+                show_rating: section.settings.show_rating,
+                section_id: section.id
+              %}
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <div class="collection-products__empty">
+          <p>No products found in this collection.</p>
+          <a href="/collections/all" class="button">Browse All Products</a>
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} Pagination {%- endcomment -%}
+      {%- if paginate.pages > 1 -%}
+        <div class="collection-pagination">
+          {% render 'pagination', paginate: paginate %}
+        </div>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</div>
+
+<script>
+  // Toggle sidebar sections
+  document.querySelectorAll('.sidebar-nav__heading').forEach(button => {
+    button.addEventListener('click', () => {
+      const expanded = button.getAttribute('aria-expanded') === 'true';
+      button.setAttribute('aria-expanded', !expanded);
+      const list = document.getElementById(button.getAttribute('aria-controls'));
+      if (list) {
+        list.classList.toggle('sidebar-nav__list--collapsed', expanded);
+      }
+    });
+  });
+
+  // Mobile sidebar toggle
+  const mobileToggle = document.getElementById('mobile-sidebar-toggle');
+  const sidebar = document.getElementById('collection-sidebar');
+  if (mobileToggle && sidebar) {
+    mobileToggle.addEventListener('click', () => {
+      const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+      mobileToggle.setAttribute('aria-expanded', !expanded);
+      sidebar.classList.toggle('collection-sidebar-layout__sidebar--mobile-visible', !expanded);
+      mobileToggle.textContent = expanded ? 'Browse Categories' : 'Hide Categories';
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Collection with Sidebar",
+  "tag": "section",
+  "class": "section-collection-sidebar",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 36,
+      "step": 4,
+      "default": 12,
+      "label": "Products per page"
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3,
+      "label": "Columns on desktop"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        { "value": "adapt", "label": "Adapt to image" },
+        { "value": "portrait", "label": "Portrait" },
+        { "value": "square", "label": "Square" }
+      ],
+      "default": "adapt",
+      "label": "Image ratio"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "Show second image on hover"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "default": false,
+      "label": "Show vendor"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_rating",
+      "default": false,
+      "label": "Show rating"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "fantasy_football",
+      "name": "Fantasy Football Menu",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Fantasy Football",
+          "label": "Heading text"
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "default": "#21477e",
+          "label": "Heading background color"
+        },
+        {
+          "type": "checkbox",
+          "id": "expanded_default",
+          "default": true,
+          "label": "Expanded by default"
+        }
+      ]
+    },
+    {
+      "type": "category",
+      "name": "Category Menu",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Shop Category",
+          "label": "Heading text"
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "default": "#9a282c",
+          "label": "Heading background color"
+        },
+        {
+          "type": "checkbox",
+          "id": "expanded_default",
+          "default": false,
+          "label": "Expanded by default"
+        }
+      ]
+    },
+    {
+      "type": "sport",
+      "name": "Sport Menu",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "default": "Shop By Sport",
+          "label": "Heading text"
+        },
+        {
+          "type": "color",
+          "id": "heading_color",
+          "default": "#9a282c",
+          "label": "Heading background color"
+        },
+        {
+          "type": "checkbox",
+          "id": "expanded_default",
+          "default": false,
+          "label": "Expanded by default"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection with Sidebar",
+      "blocks": [
+        { "type": "fantasy_football" },
+        { "type": "category" },
+        { "type": "sport" }
+      ]
+    }
+  ],
+  "templates": ["collection"]
+}
+{% endschema %}

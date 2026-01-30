@@ -1,0 +1,37 @@
+{% comment %}
+  Engraving Lines Input - Decade Awards (Compact)
+  Renders text input fields for personalized engraving.
+{% endcomment %}
+
+{%- liquid
+  assign line_count = product.metafields.custom.engraving_line_count.value | default: 0 | plus: 0
+  assign chars_per_line = product.metafields.custom.characters_per_line.value | default: 30 | plus: 0
+-%}
+
+{%- if line_count > 0 -%}
+  <div class="product-customizer__engraving" data-engraving-lines="{{ line_count }}" data-chars-per-line="{{ chars_per_line }}">
+    <h3 class="product-customizer__section-title">
+      Engraving <span class="product-customizer__meta">{{ line_count }} line{% if line_count > 1 %}s{% endif %} &bull; {{ chars_per_line }} chars each &bull; FREE</span>
+    </h3>
+
+    <div class="product-customizer__lines">
+      {%- for i in (1..line_count) -%}
+        <div class="product-customizer__input-wrapper">
+          <input
+            type="text"
+            id="engraving-line-{{ i }}"
+            name="properties[Line {{ i }}]"
+            class="product-customizer__input"
+            maxlength="{{ chars_per_line }}"
+            placeholder="Line {{ i }}"
+            data-engraving-input
+            autocomplete="off"
+          >
+          <span class="product-customizer__char-count" data-char-count>
+            <span data-current>0</span>/{{ chars_per_line }}
+          </span>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}

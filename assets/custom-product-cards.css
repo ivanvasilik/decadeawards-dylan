@@ -1,0 +1,284 @@
+/* Custom Product Card Styling - Decade Awards */
+/* Modern card design with border, shadow, and Shop Now button */
+
+/* Card wrapper */
+.product-card-wrapper {
+  height: 100%;
+}
+
+.product-card-wrapper .card {
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card-wrapper .card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Image area */
+.product-card-wrapper .card__inner {
+  border-radius: 0;
+  background: #f8f8f8;
+  position: relative;
+}
+
+.product-card-wrapper .card__inner.ratio {
+  position: relative;
+}
+
+.product-card-wrapper .card__inner.ratio::before {
+  content: '';
+  display: block;
+  padding-bottom: var(--ratio-percent, 100%);
+}
+
+.product-card-wrapper .card__media {
+  background: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.product-card-wrapper .card__media .media {
+  width: 100%;
+  height: 100%;
+}
+
+.product-card-wrapper .card__media img {
+  object-fit: contain;
+  padding: 1rem;
+  transition: transform 0.3s ease;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.product-card-wrapper .card:hover .card__media img {
+  transform: scale(1.03);
+}
+
+/* Content area */
+.product-card-wrapper .card > .card__content {
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* Title styling */
+.product-card-wrapper .card__heading {
+  font-size: 1.46rem;
+  line-height: 1.4;
+  font-weight: 500;
+  color: #333;
+  margin: 0 0 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 5.6em;
+}
+
+.product-card-wrapper .card__heading a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.product-card-wrapper .card__heading a:hover {
+  color: #21477e;
+}
+
+/* Card information area - push to bottom */
+.product-card-wrapper .card__information {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card-wrapper .card-information {
+  margin-top: auto;
+}
+
+/* Price and button row */
+.product-card-wrapper .card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  gap: 0.75rem;
+}
+
+/* Price styling */
+.product-card-wrapper .price {
+  margin: 0;
+}
+
+.product-card-wrapper .price-item {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.product-card-wrapper .price--on-sale .price-item--regular {
+  font-size: 1rem;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.product-card-wrapper .price--on-sale .price-item--sale {
+  color: #9a282c;
+}
+
+/* Shop Now button */
+.product-card-wrapper .card__shop-now {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  background-color: #21477e;
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 400;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.product-card-wrapper .card__shop-now:hover {
+  background-color: #1a3a68;
+  color: #fff;
+}
+
+/* Hide the default Dawn quick add buttons */
+.product-card-wrapper .quick-add {
+  display: none !important;
+}
+
+/* Badge positioning */
+.product-card-wrapper .card__badge {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 2;
+}
+
+.product-card-wrapper .badge {
+  background: #9a282c;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+/* Sale badge */
+.product-card-wrapper .badge--on-sale,
+.product-card-wrapper .color-accent-1 .badge {
+  background: #9a282c;
+}
+
+/* Sold out badge */
+.product-card-wrapper .badge--sold-out,
+.product-card-wrapper .color-inverse .badge {
+  background: #666;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 749px) {
+  .product-card-wrapper .card > .card__content {
+    padding: 1rem;
+  }
+
+  .product-card-wrapper .card__heading {
+    font-size: 1.3rem;
+    min-height: 5.6em;
+  }
+
+  .product-card-wrapper .price-item {
+    font-size: 1.25rem;
+  }
+
+  .product-card-wrapper .card__shop-now {
+    padding: 0.625rem 1.25rem;
+    font-size: 1.2rem;
+  }
+
+  .product-card-wrapper .card__footer {
+    flex-wrap: wrap;
+  }
+}
+
+/* Fix for cards in grid */
+.collection-products .product-card-wrapper,
+.collection-product-list .product-card-wrapper,
+.product-grid .product-card-wrapper {
+  height: 100%;
+}
+
+.collection-products .product-card-wrapper .card,
+.collection-product-list .product-card-wrapper .card,
+.product-grid .product-card-wrapper .card {
+  height: 100%;
+}
+
+/* Related products / featured collection cards */
+.related-products .product-card-wrapper .card,
+.featured-collection .product-card-wrapper .card {
+  height: 100%;
+}
+
+/* Remove extra spacing from Dawn defaults */
+.product-card-wrapper .card--standard .card__content {
+  padding: 1rem 1.25rem;
+}
+
+.product-card-wrapper .card--card .card__content {
+  padding: 1rem 1.25rem;
+}
+
+/* Ensure proper inner padding is removed */
+.product-card-wrapper .card__inner .card__content {
+  display: none;
+}
+
+/* Carousel-specific fixes */
+.da-carousel__slide .product-card-wrapper {
+  height: 100%;
+}
+
+.da-carousel__slide .product-card-wrapper .card {
+  height: 100%;
+}
+
+.da-carousel__slide .product-card-wrapper .card__inner {
+  aspect-ratio: 1;
+  position: relative;
+}
+
+.da-carousel__slide .product-card-wrapper .card__media {
+  position: absolute;
+  inset: 0;
+}
+
+.da-carousel__slide .product-card-wrapper .card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

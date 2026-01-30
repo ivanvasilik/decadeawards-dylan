@@ -1,0 +1,15 @@
+{%- comment -%}
+  Decade Awards Design System Loader
+  Include this in theme.liquid to load custom fonts and styles
+{%- endcomment -%}
+
+{%- comment -%} Preconnect to Google Fonts for faster loading {%- endcomment -%}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+{%- comment -%} Load Playfair Display for elegant product titles {%- endcomment -%}
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+{%- comment -%} Load custom design system CSS {%- endcomment -%}
+{{ 'decade-awards-design-system.css' | asset_url | stylesheet_tag }}
+{{ 'product-page-refined.css' | asset_url | stylesheet_tag }}

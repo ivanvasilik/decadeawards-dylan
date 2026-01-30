@@ -1,0 +1,36 @@
+{% comment %}
+  Comments Field - Decade Awards
+  Renders a textarea for special instructions or comments.
+
+  Usage: {% render 'comments-field', product: product %}
+
+  Metafields:
+  - custom.has_comments: boolean to show/hide
+{% endcomment %}
+
+{%- liquid
+  assign has_comments = product.metafields.custom.has_comments.value
+  assign has_group_ordering = product.metafields.custom.has_group_ordering.value
+-%}
+
+{%- if has_comments == true or has_group_ordering == true -%}
+  <div class="product-customizer__comments">
+    <label class="product-customizer__label" for="order-comments">
+      Special Instructions / Comments
+      <span class="product-customizer__optional">(optional)</span>
+    </label>
+
+    <textarea
+      id="order-comments"
+      name="properties[Comments]"
+      class="product-customizer__textarea"
+      rows="3"
+      placeholder="Enter any special requests, layout preferences, or additional instructions..."
+      maxlength="500"
+    ></textarea>
+
+    <div class="product-customizer__char-count">
+      <span data-current>0</span>/500 characters
+    </div>
+  </div>
+{%- endif -%}

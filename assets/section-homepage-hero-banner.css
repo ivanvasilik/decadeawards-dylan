@@ -1,0 +1,183 @@
+/* ============================================
+   DECADE AWARDS - HERO BANNER
+   Full-width hero with optional text overlay
+   ============================================ */
+
+.da-hero-banner {
+  position: relative;
+  width: 100%;
+}
+
+/* Image container - scales to image size */
+.da-hero-banner__media {
+  position: relative;
+  width: 100%;
+}
+
+.da-hero-banner__image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.da-hero-banner__placeholder {
+  width: 100%;
+  aspect-ratio: 21/9;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.da-hero-banner__placeholder-svg {
+  width: 50%;
+  max-width: 400px;
+  opacity: 0.3;
+}
+
+/* Overlay for text readability */
+.da-hero-banner__overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Content positioning */
+.da-hero-banner__content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  padding: 3rem 5%;
+  z-index: 2;
+}
+
+.da-hero-banner__content--left {
+  justify-content: flex-start;
+}
+
+.da-hero-banner__content--left .da-hero-banner__content-wrapper {
+  text-align: left;
+}
+
+.da-hero-banner__content--center {
+  justify-content: center;
+}
+
+.da-hero-banner__content--center .da-hero-banner__content-wrapper {
+  text-align: center;
+}
+
+.da-hero-banner__content--right {
+  justify-content: flex-end;
+}
+
+.da-hero-banner__content--right .da-hero-banner__content-wrapper {
+  text-align: right;
+}
+
+.da-hero-banner__content-wrapper {
+  width: 100%;
+}
+
+/* Typography */
+.da-hero-banner__subheading {
+  display: inline-block;
+  font-family: var(--font-body-family);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #9a282c;
+  margin-bottom: 1rem;
+}
+
+.da-hero-banner__heading {
+  font-family: var(--font-heading-family);
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: #21477e;
+  margin: 0 0 1rem;
+}
+
+.da-hero-banner__description {
+  font-family: var(--font-body-family);
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  line-height: 1.6;
+  color: #21477e;
+  margin: 0 0 2rem;
+}
+
+/* Button */
+.da-hero-banner__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2rem;
+  background: #9a282c;
+  color: #ffffff;
+  font-family: var(--font-body-family);
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.da-hero-banner__button:hover {
+  background: #7d2023;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+}
+
+.da-hero-banner__button svg {
+  transition: transform 0.3s ease;
+}
+
+.da-hero-banner__button:hover svg {
+  transform: translateX(4px);
+}
+
+/* Mobile adjustments */
+@media (max-width: 749px) {
+  .da-hero-banner__content {
+    align-items: flex-end;
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  .da-hero-banner__content--left,
+  .da-hero-banner__content--center,
+  .da-hero-banner__content--right {
+    justify-content: flex-start;
+  }
+
+  .da-hero-banner__content--left .da-hero-banner__content-wrapper,
+  .da-hero-banner__content--center .da-hero-banner__content-wrapper,
+  .da-hero-banner__content--right .da-hero-banner__content-wrapper {
+    text-align: left;
+  }
+
+  .da-hero-banner__content-wrapper {
+    max-width: 100% !important;
+  }
+
+  .da-hero-banner__subheading {
+    font-size: 0.9rem;
+  }
+
+  .da-hero-banner__heading {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+  }
+
+  .da-hero-banner__description {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .da-hero-banner__button {
+    font-size: 1.125rem;
+    padding: 0.875rem 1.5rem;
+  }
+}

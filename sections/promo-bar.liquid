@@ -1,0 +1,169 @@
+{%- comment -%}
+  Custom Promo Bar - Decade Awards
+  Two-column layout: Phone on left, Free Shipping on right
+{%- endcomment -%}
+
+{%- style -%}
+  .promo-bar {
+    background: linear-gradient(135deg, #9a282c 0%, #7d2024 100%);
+    color: #fff;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    border-bottom: none;
+  }
+
+  .promo-bar__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--page-width);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    gap: 1rem;
+  }
+
+  .promo-bar__item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .promo-bar__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .promo-bar__icon svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+  }
+
+  .promo-bar__text {
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+
+  .promo-bar__text strong {
+    font-weight: 600;
+  }
+
+  .promo-bar__link {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .promo-bar__link:hover {
+    opacity: 0.85;
+  }
+
+  .promo-bar__phone-number {
+    font-weight: 600;
+    letter-spacing: 0.03em;
+  }
+
+  .promo-bar__shipping {
+    text-align: right;
+  }
+
+  .promo-bar__shipping-highlight {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 0.375rem 0.75rem;
+    border-radius: 3px;
+    font-weight: 600;
+    margin-right: 0.5rem;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+  }
+
+  /* Mobile: Stack vertically and center */
+  @media screen and (max-width: 749px) {
+    .promo-bar {
+      padding: 0.625rem 0;
+    }
+
+    .promo-bar__inner {
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: center;
+    }
+
+    .promo-bar__item {
+      justify-content: center;
+    }
+
+    .promo-bar__text {
+      font-size: 0.9375rem;
+    }
+
+    .promo-bar__shipping-highlight {
+      font-size: 0.8125rem;
+    }
+  }
+{%- endstyle -%}
+
+<div class="promo-bar" role="region" aria-label="Promotional information">
+  <div class="promo-bar__inner">
+    {%- comment -%} Left: Phone {%- endcomment -%}
+    <div class="promo-bar__item promo-bar__phone">
+      <span class="promo-bar__icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="promo-bar__text">
+        <a href="tel:{{ section.settings.phone_number | remove: '-' | remove: ' ' | remove: '(' | remove: ')' }}" class="promo-bar__link">
+          Call Us at <span class="promo-bar__phone-number">{{ section.settings.phone_number }}</span>
+        </a>
+      </span>
+    </div>
+
+    {%- comment -%} Right: Free Shipping {%- endcomment -%}
+    <div class="promo-bar__item promo-bar__shipping">
+      <span class="promo-bar__icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 3h15v13H1zM16 8h4l3 3v5h-7V8z" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="5.5" cy="18.5" r="2.5"/>
+          <circle cx="18.5" cy="18.5" r="2.5"/>
+        </svg>
+      </span>
+      <span class="promo-bar__text">
+        <span class="promo-bar__shipping-highlight">Free Shipping</span>
+        On orders over ${{ section.settings.free_shipping_threshold }}
+      </span>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Promo Bar",
+  "tag": "section",
+  "class": "section-promo-bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "phone_number",
+      "label": "Phone Number",
+      "default": "509-474-9530"
+    },
+    {
+      "type": "number",
+      "id": "free_shipping_threshold",
+      "label": "Free Shipping Threshold ($)",
+      "default": 95
+    }
+  ],
+  "presets": [
+    {
+      "name": "Promo Bar"
+    }
+  ]
+}
+{% endschema %}

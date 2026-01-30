@@ -1,0 +1,207 @@
+{%- comment -%}
+  Homepage Collection Grid - Decade Awards
+  Elegant grid of collection tiles with hover effects
+{%- endcomment -%}
+
+{{ 'section-homepage-collection-grid.css' | asset_url | stylesheet_tag }}
+
+<section class="da-grid-section" style="background: {{ section.settings.background_color }};">
+  <div class="da-grid-section__container">
+    {%- if section.settings.heading != blank -%}
+      <div class="da-grid-section__header">
+        {%- if section.settings.subheading != blank -%}
+          <span class="da-grid-section__subheading">{{ section.settings.subheading }}</span>
+        {%- endif -%}
+        <h2 class="da-grid-section__heading">{{ section.settings.heading }}</h2>
+        {%- if section.settings.description != blank -%}
+          <p class="da-grid-section__description">{{ section.settings.description }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="da-grid da-grid--{{ section.settings.columns_desktop }}-col">
+      {%- for block in section.blocks -%}
+        <a
+          href="{{ block.settings.link }}"
+          class="da-grid__item"
+          {{ block.shopify_attributes }}
+          style="--item-index: {{ forloop.index }};"
+        >
+          <div class="da-grid__item-image-wrap">
+            {%- if block.settings.image != blank -%}
+              <img
+                src="{{ block.settings.image | image_url: width: 400 }}"
+                srcset="{{ block.settings.image | image_url: width: 200 }} 200w,
+                        {{ block.settings.image | image_url: width: 400 }} 400w"
+                sizes="(max-width: 749px) 50vw, 200px"
+                alt="{{ block.settings.title }}"
+                class="da-grid__item-image"
+                loading="lazy"
+                width="200"
+                height="200"
+              >
+            {%- elsif block.settings.external_image != blank -%}
+              <img
+                src="{{ block.settings.external_image }}"
+                alt="{{ block.settings.title }}"
+                class="da-grid__item-image"
+                loading="lazy"
+                width="200"
+                height="200"
+              >
+            {%- else -%}
+              <div class="da-grid__item-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                  <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0"/>
+                </svg>
+              </div>
+            {%- endif -%}
+            <div class="da-grid__item-overlay"></div>
+          </div>
+          <div class="da-grid__item-content">
+            <h3 class="da-grid__item-title">{{ block.settings.title }}</h3>
+            <span class="da-grid__item-cta">
+              Shop Now
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </span>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.button_label != blank -%}
+      <div class="da-grid-section__footer">
+        <a href="{{ section.settings.button_link }}" class="da-grid-section__button">
+          {{ section.settings.button_label }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection Grid",
+  "tag": "section",
+  "class": "section-collection-grid",
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f8f9fa"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop By Category"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "select",
+      "id": "columns_desktop",
+      "label": "Columns on desktop",
+      "options": [
+        { "value": "4", "label": "4 columns" },
+        { "value": "5", "label": "5 columns" },
+        { "value": "6", "label": "6 columns" }
+      ],
+      "default": "5"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_tile",
+      "name": "Collection Tile",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Collection Name"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "url",
+          "id": "external_image",
+          "label": "External image URL (optional)"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Shop By Category",
+      "settings": {
+        "heading": "Shop By Category",
+        "columns_desktop": "5"
+      },
+      "blocks": [
+        { "type": "collection_tile", "settings": { "title": "Fantasy Football", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/by-category-ffl2.webp" } },
+        { "type": "collection_tile", "settings": { "title": "Last Place Trophies", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/by-category-loser3.webp" } },
+        { "type": "collection_tile", "settings": { "title": "Trophies", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/by-category-trophies3.webp" } },
+        { "type": "collection_tile", "settings": { "title": "Medals", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/by-category-medals2.webp" } },
+        { "type": "collection_tile", "settings": { "title": "Corporate Awards", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/by-category-corporate-awards.webp" } },
+        { "type": "collection_tile", "settings": { "title": "Plaques", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/by-category-plaques2.webp" } },
+        { "type": "collection_tile", "settings": { "title": "Academic", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/academic-r2.webp" } },
+        { "type": "collection_tile", "settings": { "title": "Perpetual Trophies", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/by-category-perpetual.webp" } },
+        { "type": "collection_tile", "settings": { "title": "Personalized Gifts", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/by-category-personalized-gift.webp" } },
+        { "type": "collection_tile", "settings": { "title": "3D & Novelty Awards", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/by-category-novelty2.webp" } }
+      ]
+    },
+    {
+      "name": "Shop By Sport",
+      "settings": {
+        "heading": "Shop By Sport",
+        "columns_desktop": "6",
+        "background_color": "#ffffff"
+      },
+      "blocks": [
+        { "type": "collection_tile", "settings": { "title": "Baseball", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/baseball-r.webp" } },
+        { "type": "collection_tile", "settings": { "title": "Basketball", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/basketball-r.webp" } },
+        { "type": "collection_tile", "settings": { "title": "Bowling", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/bowling-r.webp" } },
+        { "type": "collection_tile", "settings": { "title": "Cheerleading", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/cheer-r.webp" } },
+        { "type": "collection_tile", "settings": { "title": "Football", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/football-r.webp" } },
+        { "type": "collection_tile", "settings": { "title": "Golf", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/golf-ball-r.webp" } },
+        { "type": "collection_tile", "settings": { "title": "Gymnastics", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/gymnastics-r.webp" } },
+        { "type": "collection_tile", "settings": { "title": "Hockey", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/hockey-puck-r.webp" } },
+        { "type": "collection_tile", "settings": { "title": "Soccer", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/soccer-r.webp" } },
+        { "type": "collection_tile", "settings": { "title": "Softball", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/softball-01-r.webp" } },
+        { "type": "collection_tile", "settings": { "title": "Swimming", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/swimming-r.webp" } },
+        { "type": "collection_tile", "settings": { "title": "Tennis", "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/tennis-ball-r.webp" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

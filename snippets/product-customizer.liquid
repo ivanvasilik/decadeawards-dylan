@@ -1,0 +1,73 @@
+{% comment %}
+  Product Customizer - Decade Awards
+  Main wrapper that renders all customization options for a product.
+
+  Usage: Add to sections/main-product.liquid after variant picker:
+    {% render 'product-customizer', product: product %}
+
+  This snippet renders all applicable customization options based on
+  product metafields:
+  - Ribbon selector (dropdown)
+  - Colorfill options (radio buttons)
+  - Engraving lines (text inputs)
+  - Perpetual plates (dropdown)
+  - File upload for group orders
+  - Comments field
+  - 360 spin viewer
+{% endcomment %}
+
+{%- liquid
+  # Check if product has any customization options
+  assign has_engraving = product.metafields.custom.engraving_line_count.value | plus: 0
+  assign has_ribbons = product.metafields.ribbons.options.value
+  assign has_colorfill = product.metafields.colorfill.options.value
+  assign has_perpetual = product.metafields.perpetual.plate_options.value
+  assign has_file_upload = product.metafields.custom.has_file_upload.value
+  assign has_comments = product.metafields.custom.has_comments.value
+  assign has_group_ordering = product.metafields.custom.has_group_ordering.value
+  assign has_spin360 = product.metafields.custom.spin360_code.value
+  assign min_qty = product.metafields.custom.min_purchase_qty.value
+
+  assign has_any_customization = false
+  if has_engraving > 0 or has_ribbons != blank or has_colorfill != blank or has_perpetual != blank or has_file_upload or has_comments or has_group_ordering
+    assign has_any_customization = true
+  endif
+-%}
+
+{%- if has_any_customization -%}
+  <div class="product-customizer" id="product-customizer" data-product-customizer>
+    {%- comment -%} 360 Spin Viewer - shown first for visual impact {%- endcomment -%}
+    {%- if has_spin360 != blank -%}
+      {% render 'spin360-viewer', product: product %}
+    {%- endif -%}
+
+    {%- comment -%} Minimum quantity notice {%- endcomment -%}
+    {%- if min_qty and min_qty > 1 -%}
+      <div class="product-customizer__notice product-customizer__notice--info">
+        <strong>Minimum Order:</strong> {{ min_qty }} units required
+      </div>
+    {%- endif -%}
+
+    {%- comment -%} Ribbon selection - usually first choice {%- endcomment -%}
+    {% render 'ribbon-selector', product: product %}
+
+    {%- comment -%} Colorfill options {%- endcomment -%}
+    {% render 'colorfill-selector', product: product %}
+
+    {%- comment -%} Perpetual plate count {%- endcomment -%}
+    {% render 'perpetual-plates', product: product %}
+
+    {%- comment -%} Engraving lines - main customization {%- endcomment -%}
+    {% render 'engraving-lines', product: product %}
+
+    {%- comment -%} File upload for group orders {%- endcomment -%}
+    {% render 'group-order-upload', product: product %}
+
+    {%- comment -%} Comments/special instructions {%- endcomment -%}
+    {% render 'comments-field', product: product %}
+  </div>
+
+  {%- comment -%} Load customizer JavaScript and CSS {%- endcomment -%}
+  {{ 'product-customizer.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'product-customizer.js' | asset_url }}" defer></script>
+{%- endif -%}
