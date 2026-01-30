@@ -1,0 +1,103 @@
+{% comment %}
+  Renders breadcrumb navigation for product pages.
+  Shows: Home / Category / Collection / Product Name
+
+  Usage:
+  {% render 'breadcrumb' %}
+{% endcomment %}
+
+{%- liquid
+  assign breadcrumb_collection = null
+  assign category_link = null
+  
+  comment
+    Find the primary collection for the product
+    Prioritize collections that match navigation menu structure
+  endcomment
+  if product.collections.size > 0
+    for collection in product.collections
+      comment
+        Check if this collection is in the main navigation menu
+        Look through parent links (like "Shop by Sport", "Shop by Category")
+        and their child links (actual collections)
+      endcomment
+      for link in linklists.main-menu.links
+        comment
+          Check if this is a parent category link (like "Shop by Sport")
+        endcomment
+        if link.links.size > 0
+          for childlink in link.links
+            if childlink.type == 'collection_link' and childlink.object.handle == collection.handle
+              assign breadcrumb_collection = collection
+              assign category_link = link
+              break
+            endif
+          endfor
+        elsif link.type == 'collection_link' and link.object.handle == collection.handle
+          comment
+            Direct collection link in menu
+          endcomment
+          assign breadcrumb_collection = collection
+          break
+        endif
+      endfor
+      
+      comment
+        If we found a match, break out of the collection loop
+      endcomment
+      if breadcrumb_collection != null
+        break
+      endif
+    endfor
+    
+    comment
+      If no menu match found, use first collection
+    endcomment
+    if breadcrumb_collection == null
+      assign breadcrumb_collection = product.collections.first
+    endif
+  endif
+-%}
+
+<nav class="breadcrumbs" aria-label="Breadcrumb">
+  <ol class="breadcrumbs__list" itemscope itemtype="https://schema.org/BreadcrumbList">
+    <li class="breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <a href="{{ routes.root_url }}" class="breadcrumbs__link" itemprop="item">
+        <span itemprop="name">Home</span>
+      </a>
+      <meta itemprop="position" content="1" />
+    </li>
+    
+    {%- if category_link != null -%}
+      <li class="breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span class="breadcrumbs__separator">/</span>
+        {%- if category_link.url != blank -%}
+          <a href="{{ category_link.url }}" class="breadcrumbs__link" itemprop="item">
+            <span itemprop="name">{{ category_link.title | upcase }}</span>
+          </a>
+        {%- else -%}
+          <span class="breadcrumbs__link" itemprop="item">
+            <span itemprop="name">{{ category_link.title | upcase }}</span>
+          </span>
+        {%- endif -%}
+        <meta itemprop="position" content="2" />
+      </li>
+    {%- endif -%}
+    
+    {%- if breadcrumb_collection != null -%}
+      <li class="breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span class="breadcrumbs__separator">/</span>
+        <a href="{{ breadcrumb_collection.url }}" class="breadcrumbs__link" itemprop="item">
+          <span itemprop="name">{{ breadcrumb_collection.title | upcase }}</span>
+        </a>
+        <meta itemprop="position" content="{% if category_link != null %}3{% else %}2{% endif %}" />
+      </li>
+    {%- endif -%}
+    
+    <li class="breadcrumbs__item breadcrumbs__item--current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+      <span class="breadcrumbs__separator">/</span>
+      <span class="breadcrumbs__current" itemprop="name">{{ product.title | escape }}</span>
+      <meta itemprop="position" content="{% if category_link != null %}4{% elsif breadcrumb_collection != null %}3{% else %}2{% endif %}" />
+    </li>
+  </ol>
+</nav>

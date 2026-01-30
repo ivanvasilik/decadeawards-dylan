@@ -642,16 +642,51 @@ select {
    BREADCRUMBS
    ---------------------------------------- */
 .breadcrumbs {
-  font-size: 0.8125rem;
+  font-size: 1.275rem;
   color: var(--da-gray);
+  margin-bottom: 1.5rem;
+  padding: 1rem 0;
 }
 
-.breadcrumbs a {
-  color: var(--da-gray);
+.breadcrumbs__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 0.5rem;
 }
 
-.breadcrumbs a:hover {
+.breadcrumbs__item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.breadcrumbs__separator {
+  color: var(--da-gray);
+  margin: 0 0.25rem;
+}
+
+.breadcrumbs__link {
+  color: var(--da-gray);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbs__link:hover {
   color: var(--da-blue);
+  text-decoration: underline;
+}
+
+.breadcrumbs__current {
+  color: var(--da-charcoal);
+  font-weight: 500;
+}
+
+.breadcrumbs__item--current {
+  color: var(--da-charcoal);
 }
 
 /* ----------------------------------------
