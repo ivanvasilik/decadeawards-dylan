@@ -90,6 +90,7 @@
 
       let currentIndex = 0;
       const slidesPerView = window.innerWidth < 750 ? 2 : window.innerWidth < 990 ? 3 : {{ section.settings.columns_desktop }};
+      console.log(slides.length, "=========>")
       const totalSlides = slides.length;
       const maxIndex = Math.max(0, totalSlides - slidesPerView);
 
