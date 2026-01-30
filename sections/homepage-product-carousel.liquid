@@ -82,6 +82,10 @@
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('[data-product-carousel]').forEach(carousel => {
+      // Prevent duplicate initialization
+      if (carousel.dataset.initialized === 'true') return;
+      carousel.dataset.initialized = 'true';
+
       const track = carousel.querySelector('[data-carousel-track]');
       const slides = track.querySelectorAll('.da-carousel__slide');
       const prevBtn = carousel.closest('.da-carousel-section').querySelector('[data-carousel-prev]');
@@ -90,15 +94,18 @@
 
       let currentIndex = 0;
       const slidesPerView = window.innerWidth < 750 ? 2 : window.innerWidth < 990 ? 3 : {{ section.settings.columns_desktop }};
-      console.log(slides.length, "=========>")
       const totalSlides = slides.length;
       const maxIndex = Math.max(0, totalSlides - slidesPerView);
+
+      // Clear existing dots before creating new ones
+      dotsContainer.innerHTML = '';
 
       // Create dots
       const dotCount = maxIndex + 1;
       for (let i = 0; i < dotCount; i++) {
         const dot = document.createElement('button');
         dot.className = 'da-carousel__dot' + (i === 0 ? ' da-carousel__dot--active' : '');
+        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
         dot.addEventListener('click', () => goToSlide(i));
         dotsContainer.appendChild(dot);
       }
