@@ -1,1 +1,350 @@
-{"sections":{"hero_banner":{"type":"homepage-hero-banner","settings":{"image":"shopify:\/\/shop_images\/hero-trophies-awards.png","show_text_overlay":true,"subheading":"Sports, Corporate, Fantasy Football Trophies & medals.","heading":"Customized Trophies & Medals","description":"","text_max_width":300,"text_position":"left","overlay_opacity":30,"button_label":"Shop All","button_link":"\/collections\/all"}},"collection_grid_category":{"type":"homepage-collection-grid","blocks":{"cat_1":{"type":"collection_tile","settings":{"title":"Fantasy Football","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/by-category-ffl2.webp","link":"\/collections\/fantasy-football"}},"cat_2":{"type":"collection_tile","settings":{"title":"Last Place Trophies","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/by-category-loser3.webp","link":"\/collections\/last-place-trophies"}},"cat_3":{"type":"collection_tile","settings":{"title":"Trophies","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/by-category-trophies3.webp","link":"\/collections\/trophies"}},"cat_4":{"type":"collection_tile","settings":{"title":"Medals","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/by-category-medals2.webp","link":"\/collections\/medals"}},"cat_5":{"type":"collection_tile","settings":{"title":"Corporate Awards","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/by-category-corporate-awards.webp","link":"\/collections\/corporate-awards"}},"cat_6":{"type":"collection_tile","settings":{"title":"Plaques","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/by-category-plaques2.webp","link":"\/collections\/plaques"}},"cat_7":{"type":"collection_tile","settings":{"title":"Academic","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/academic-r2.webp","link":"\/collections\/academic"}},"cat_8":{"type":"collection_tile","settings":{"title":"Perpetual Trophies","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/by-category-perpetual.webp","link":"\/collections\/perpetual-trophies"}},"cat_9":{"type":"collection_tile","settings":{"title":"Personalized Gifts","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/by-category-personalized-gift.webp","link":"\/collections\/personalized-gifts"}},"cat_10":{"type":"collection_tile","settings":{"title":"3D & Novelty Awards","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/by-category-novelty2.webp","link":"\/collections\/novelty-awards"}}},"block_order":["cat_1","cat_2","cat_3","cat_4","cat_5","cat_6","cat_7","cat_8","cat_9","cat_10"],"settings":{"background_color":"#f8f9fa","subheading":"","heading":"Shop By Category","description":"","columns_desktop":"5","button_label":"","button_link":""}},"collection_grid_sport":{"type":"homepage-collection-grid","blocks":{"sport_1":{"type":"collection_tile","settings":{"title":"Baseball","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/baseball-r.webp","link":"\/collections\/baseball"}},"sport_2":{"type":"collection_tile","settings":{"title":"Basketball","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/basketball-r.webp","link":"\/collections\/basketball"}},"sport_3":{"type":"collection_tile","settings":{"title":"Bowling","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/bowling-r.webp","link":"\/collections\/bowling"}},"sport_4":{"type":"collection_tile","settings":{"title":"Cheerleading","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/cheer-r.webp","link":"\/collections\/cheerleading"}},"sport_5":{"type":"collection_tile","settings":{"title":"Football","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/football-r.webp","link":"\/collections\/football"}},"sport_6":{"type":"collection_tile","settings":{"title":"Golf","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/golf-ball-r.webp","link":"\/collections\/golf"}},"sport_7":{"type":"collection_tile","settings":{"title":"Gymnastics","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/gymnastics-r.webp","link":"\/collections\/gymnastics"}},"sport_8":{"type":"collection_tile","settings":{"title":"Hockey","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/hockey-puck-r.webp","link":"\/collections\/hockey"}},"sport_9":{"type":"collection_tile","settings":{"title":"Soccer","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/soccer-r.webp","link":"\/collections\/soccer"}},"sport_10":{"type":"collection_tile","settings":{"title":"Softball","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/softball-01-r.webp","link":"\/collections\/softball"}},"sport_11":{"type":"collection_tile","settings":{"title":"Swimming","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/swimming-r.webp","link":"\/collections\/swimming"}},"sport_12":{"type":"collection_tile","settings":{"title":"Tennis","external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/content\/homeimages\/tennis-ball-r.webp","link":"\/collections\/tennis"}}},"block_order":["sport_1","sport_2","sport_3","sport_4","sport_5","sport_6","sport_7","sport_8","sport_9","sport_10","sport_11","sport_12"],"settings":{"background_color":"#ffffff","subheading":"","heading":"Shop By Sport","description":"","columns_desktop":"6","button_label":"","button_link":""}},"featured_cards":{"type":"homepage-featured-cards","blocks":{"card_1":{"type":"card","settings":{"external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/images\/stencil\/original\/image-manager\/academic-tts2.png","icon":"star","title":"Academics","description":"Browse our wide variety of academic awards and medals, perfect for any school event. Free engraving included for a personalized, professional touch.","button_label":"Shop Now","button_link":"\/collections\/academic"}},"card_2":{"type":"card","settings":{"external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/images\/stencil\/original\/image-manager\/awards-1-r.jpg","icon":"award","title":"Corporate Awards","description":"Shop our extensive selection of corporate awards that can be personalized for celebrating any goal or milestone. Our design team will work with you to make each award special.","button_label":"Shop Now","button_link":"\/collections\/corporate-awards"}},"card_3":{"type":"card","settings":{"external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/images\/stencil\/original\/image-manager\/c-3.png","icon":"trophy","title":"Custom Plaques & Frames","description":"Choose from a variety of customizable plaques and frames that can be personalized or branded just for you. Free engraving and design included!","button_label":"Shop Now","button_link":"\/collections\/plaques"}},"card_4":{"type":"card","settings":{"external_image":"https:\/\/cdn11.bigcommerce.com\/s-aub1q7pn32\/images\/stencil\/original\/image-manager\/c-2.png","icon":"shield","title":"First Responders & American Hero Awards","description":"Explore our collection of First Responders & American Hero Awards and honor those special few. Free engraving included to create a personalized tribute.","button_label":"Shop Now","button_link":"\/collections\/first-responders"}}},"block_order":["card_1","card_2","card_3","card_4"],"settings":{"background_color":"#1a1a2e","subheading":"Explore Our Collections","heading":"Celebrate Every Achievement"}},"product_carousel_fantasy":{"type":"homepage-product-carousel","settings":{"background_color":"#f8f9fa","subheading":"Fan Favorites","heading":"Fantasy Football Trophies","collection":"fantasy-football","products_to_show":10,"columns_desktop":4,"show_view_all":true}},"product_carousel_new":{"type":"homepage-product-carousel","settings":{"background_color":"#ffffff","subheading":"Just Arrived","heading":"New Products","collection":"medals","products_to_show":10,"columns_desktop":4,"show_view_all":true}}},"order":["hero_banner","collection_grid_category","collection_grid_sport","featured_cards","product_carousel_fantasy","product_carousel_new"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_banner": {
+      "type": "homepage-hero-banner",
+      "settings": {
+        "image": "shopify://shop_images/hero-trophies-awards.png",
+        "show_text_overlay": true,
+        "subheading": "Sports, Corporate, Fantasy Football Trophies & medals.",
+        "heading": "Customized Trophies & Medals",
+        "description": "",
+        "text_max_width": 300,
+        "text_position": "left",
+        "overlay_opacity": 30,
+        "button_label": "Shop All",
+        "button_link": "/collections/all"
+      }
+    },
+    "collection_grid_category": {
+      "type": "homepage-collection-grid",
+      "blocks": {
+        "cat_1": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "Fantasy Football",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/by-category-ffl2.webp",
+            "link": "/collections/fantasy-football"
+          }
+        },
+        "cat_2": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "Last Place Trophies",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/by-category-loser3.webp",
+            "link": "/collections/last-place-trophies"
+          }
+        },
+        "cat_3": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "Trophies",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/by-category-trophies3.webp",
+            "link": "/collections/trophies"
+          }
+        },
+        "cat_4": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "Medals",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/by-category-medals2.webp",
+            "link": "/collections/medals"
+          }
+        },
+        "cat_5": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "Corporate Awards",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/by-category-corporate-awards.webp",
+            "link": "/collections/corporate-awards"
+          }
+        },
+        "cat_6": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "Plaques",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/by-category-plaques2.webp",
+            "link": "/collections/plaques"
+          }
+        },
+        "cat_7": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "Academic",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/academic-r2.webp",
+            "link": "/collections/academic"
+          }
+        },
+        "cat_8": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "Perpetual Trophies",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/by-category-perpetual.webp",
+            "link": "/collections/perpetual-trophies"
+          }
+        },
+        "cat_9": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "Personalized Gifts",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/by-category-personalized-gift.webp",
+            "link": "/collections/personalized-gifts"
+          }
+        },
+        "cat_10": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "3D & Novelty Awards",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/by-category-novelty2.webp",
+            "link": "/collections/novelty-awards"
+          }
+        }
+      },
+      "block_order": [
+        "cat_1",
+        "cat_2",
+        "cat_3",
+        "cat_4",
+        "cat_5",
+        "cat_6",
+        "cat_7",
+        "cat_8",
+        "cat_9",
+        "cat_10"
+      ],
+      "settings": {
+        "background_color": "#f8f9fa",
+        "subheading": "",
+        "heading": "Shop By Category",
+        "description": "",
+        "columns_desktop": "5",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
+    "collection_grid_sport": {
+      "type": "homepage-collection-grid",
+      "blocks": {
+        "sport_1": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "Baseball",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/baseball-r.webp",
+            "link": "/collections/baseball"
+          }
+        },
+        "sport_2": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "Basketball",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/basketball-r.webp",
+            "link": "/collections/basketball"
+          }
+        },
+        "sport_3": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "Bowling",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/bowling-r.webp",
+            "link": "/collections/bowling"
+          }
+        },
+        "sport_4": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "Cheerleading",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/cheer-r.webp",
+            "link": "/collections/cheerleading"
+          }
+        },
+        "sport_5": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "Football",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/football-r.webp",
+            "link": "/collections/football"
+          }
+        },
+        "sport_6": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "Golf",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/golf-ball-r.webp",
+            "link": "/collections/golf"
+          }
+        },
+        "sport_7": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "Gymnastics",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/gymnastics-r.webp",
+            "link": "/collections/gymnastics"
+          }
+        },
+        "sport_8": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "Hockey",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/hockey-puck-r.webp",
+            "link": "/collections/hockey"
+          }
+        },
+        "sport_9": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "Soccer",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/soccer-r.webp",
+            "link": "/collections/soccer"
+          }
+        },
+        "sport_10": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "Softball",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/softball-01-r.webp",
+            "link": "/collections/softball"
+          }
+        },
+        "sport_11": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "Swimming",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/swimming-r.webp",
+            "link": "/collections/swimming"
+          }
+        },
+        "sport_12": {
+          "type": "collection_tile",
+          "settings": {
+            "title": "Tennis",
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/content/homeimages/tennis-ball-r.webp",
+            "link": "/collections/tennis"
+          }
+        }
+      },
+      "block_order": [
+        "sport_1",
+        "sport_2",
+        "sport_3",
+        "sport_4",
+        "sport_5",
+        "sport_6",
+        "sport_7",
+        "sport_8",
+        "sport_9",
+        "sport_10",
+        "sport_11",
+        "sport_12"
+      ],
+      "settings": {
+        "background_color": "#ffffff",
+        "subheading": "",
+        "heading": "Shop By Sport",
+        "description": "",
+        "columns_desktop": "6",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
+    "featured_cards": {
+      "type": "homepage-featured-cards",
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/images/stencil/original/image-manager/academic-tts2.png",
+            "icon": "star",
+            "title": "Academics",
+            "description": "Browse our wide variety of academic awards and medals, perfect for any school event. Free engraving included for a personalized, professional touch.",
+            "button_label": "Shop Now",
+            "button_link": "/collections/academic"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/images/stencil/original/image-manager/awards-1-r.jpg",
+            "icon": "award",
+            "title": "Corporate Awards",
+            "description": "Shop our extensive selection of corporate awards that can be personalized for celebrating any goal or milestone. Our design team will work with you to make each award special.",
+            "button_label": "Shop Now",
+            "button_link": "/collections/corporate-awards"
+          }
+        },
+        "card_3": {
+          "type": "card",
+          "settings": {
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/images/stencil/original/image-manager/c-3.png",
+            "icon": "trophy",
+            "title": "Custom Plaques & Frames",
+            "description": "Choose from a variety of customizable plaques and frames that can be personalized or branded just for you. Free engraving and design included!",
+            "button_label": "Shop Now",
+            "button_link": "/collections/plaques"
+          }
+        },
+        "card_4": {
+          "type": "card",
+          "settings": {
+            "external_image": "https://cdn11.bigcommerce.com/s-aub1q7pn32/images/stencil/original/image-manager/c-2.png",
+            "icon": "shield",
+            "title": "First Responders & American Hero Awards",
+            "description": "Explore our collection of First Responders & American Hero Awards and honor those special few. Free engraving included to create a personalized tribute.",
+            "button_label": "Shop Now",
+            "button_link": "/collections/first-responders"
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2",
+        "card_3",
+        "card_4"
+      ],
+      "settings": {
+        "background_color": "#1a1a2e",
+        "subheading": "Explore Our Collections",
+        "heading": "Celebrate Every Achievement"
+      }
+    },
+    "product_carousel_fantasy": {
+      "type": "homepage-product-carousel",
+      "settings": {
+        "background_color": "#f8f9fa",
+        "subheading": "Fan Favorites",
+        "heading": "Fantasy Football Trophies",
+        "collection": "fantasy-football",
+        "products_to_show": 10,
+        "columns_desktop": 4,
+        "show_view_all": true
+      }
+    },
+    "product_carousel_new": {
+      "type": "homepage-product-carousel",
+      "settings": {
+        "background_color": "#ffffff",
+        "subheading": "Just Arrived",
+        "heading": "New Products",
+        "collection": "medals",
+        "products_to_show": 10,
+        "columns_desktop": 4,
+        "show_view_all": true
+      }
+    }
+  },
+  "order": [
+    "hero_banner",
+    "collection_grid_category",
+    "collection_grid_sport",
+    "featured_cards",
+    "product_carousel_fantasy",
+    "product_carousel_new"
+  ]
+}
