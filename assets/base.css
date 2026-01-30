@@ -496,7 +496,7 @@ h6:empty {
 }
 
 .link--text {
-  color: rgb(var(--color-foreground));
+  color: ;
 }
 
 .link--text:hover {
