@@ -296,7 +296,7 @@ select {
   font-family: var(--font-heading);
   font-weight: 500;
   font-size: 0.9375rem;
-  color: #dfdfdf !important;
+  color:rgb(177, 177, 177) !important;
   transition: opacity var(--transition-fast);
 }
 
