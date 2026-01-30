@@ -500,7 +500,7 @@ h6:empty {
 }
 
 .link--text:hover {
-  color: rgba(#453c3c , 0.75);
+  color: #453c3cbf !important;
 }
 
 .link-with-icon {
