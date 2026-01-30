@@ -347,8 +347,8 @@ select {
 .header__icon--menu line,
 .icon-hamburger,
 .icon-hamburger path {
-  stroke: var(--da-white) !important;
-  color: var(--da-white) !important;
+  stroke: #453c3c !important;
+  color: #453c3c !important;
 }
 
 /* Search icon */
