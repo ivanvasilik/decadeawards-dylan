@@ -56,7 +56,6 @@ menu-drawer > details[open] > summary::before {
   visibility: visible;
 }
 
-
 @media screen and (min-width: 750px) {
   .menu-drawer {
     width: 40rem;
