@@ -333,7 +333,7 @@
         "subheading": "Just Arrived",
         "heading": "New Products",
         "collection": "new-products",
-        "products_to_show": 10,
+        "products_to_show": 12,
         "columns_desktop": 4,
         "show_view_all": true
       }
