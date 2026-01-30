@@ -296,13 +296,13 @@ select {
   font-family: var(--font-heading);
   font-weight: 500;
   font-size: 0.9375rem;
-  color: black !important;
+  color: #dfdfdf !important;
   transition: opacity var(--transition-fast);
 }
 
 .header__menu-item:hover,
 .menu-drawer__menu-item:hover {
-  color: rgba(0, 0, 0, 0.671) !important;
+  color:rgb(175, 175, 175) !important;
   opacity: 0.8;
 }
 
