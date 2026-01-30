@@ -308,8 +308,7 @@ select {
 
 .header__active-menu-item,
 .list-menu__item--active {
-  color: black !important;
-  border-bottom: 2px solid black;
+  color: #453c3c !important;
   text-decoration: none !important;
 }
 
