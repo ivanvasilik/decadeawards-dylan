@@ -496,11 +496,11 @@ h6:empty {
 }
 
 .link--text {
-  color: ;
+  color: #453c3c ;
 }
 
 .link--text:hover {
-  color: rgba(var(--color-foreground), 0.75);
+  color: rgba(#453c3c , 0.75);
 }
 
 .link-with-icon {
