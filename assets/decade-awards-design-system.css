@@ -279,14 +279,14 @@ select {
 }
 
 .header__heading-logo {
-  max-height: 60px !important;
-  width: auto !important;
+  max-height: 60px;
+  width: auto;
   height: auto;
 }
 
 @media screen and (min-width: 990px) {
   .header__heading-logo {
-    max-height: 70px !important;
+    max-height: 70px ;
   }
 }
 
