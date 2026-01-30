@@ -337,6 +337,19 @@
         "columns_desktop": 4,
         "show_view_all": true
       }
+    },
+    "homepage_product_carousel_yk8NXJ": {
+      "type": "homepage-product-carousel",
+      "name": "Product Carousel",
+      "settings": {
+        "background_color": "#f8f9fa",
+        "subheading": "",
+        "heading": "Celebrate Your Special Moments with 3D Photo Crystals",
+        "collection": "",
+        "products_to_show": 10,
+        "columns_desktop": 4,
+        "show_view_all": true
+      }
     }
   },
   "order": [
@@ -345,6 +358,7 @@
     "collection_grid_sport",
     "featured_cards",
     "product_carousel_fantasy",
-    "product_carousel_new"
+    "product_carousel_new",
+    "homepage_product_carousel_yk8NXJ"
   ]
 }
