@@ -290,6 +290,13 @@ select {
   }
 }
 
+@media screen and (min-width: 500px) {
+  .header__heading-logo {
+    height: auto;
+    max-width:210px !important;
+  }
+}
+
 /* Navigation - White text */
 .header__menu-item,
 .menu-drawer__menu-item {
