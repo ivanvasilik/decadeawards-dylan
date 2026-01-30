@@ -496,11 +496,11 @@ h6:empty {
 }
 
 .link--text {
-  color: rgb(var(--color-foreground));
+  color: #453c3c ;
 }
 
 .link--text:hover {
-  color: rgba(var(--color-foreground), 0.75);
+  color: #453c3cbf !important;
 }
 
 .link-with-icon {
@@ -2355,6 +2355,7 @@ input[type='checkbox'] {
   grid-template-areas: 'left-icons heading icons';
   grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
+  background-color: white !important;
 }
 
 @media screen and (max-width: 749px) {
@@ -2804,15 +2805,13 @@ details[open] > .header__submenu {
 .header__menu-item span {
   transition: text-decoration var(--duration-short) ease;
 }
-
+/* 
 .header__menu-item:hover span {
-  text-decoration: underline;
-  text-underline-offset: 0.3rem;
 }
 
 details[open] > .header__menu-item {
   text-decoration: underline;
-}
+} */
 
 details[open]:hover > .header__menu-item {
   text-decoration-thickness: 0.2rem;
@@ -2823,14 +2822,13 @@ details[open] > .header__menu-item .icon-caret {
 }
 
 .header__active-menu-item {
-  transition: text-decoration-thickness var(--duration-short) ease;
+  transition: color var(--duration-short) ease;
   color: rgb(var(--color-foreground));
-  text-decoration: underline;
-  text-underline-offset: 0.3rem;
+  text-decoration: none;
 }
 
 .header__menu-item:hover .header__active-menu-item {
-  text-decoration-thickness: 0.2rem;
+  text-decoration: none;
 }
 
 .header__submenu {

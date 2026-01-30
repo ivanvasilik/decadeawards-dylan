@@ -10,7 +10,6 @@
 .da-carousel-section__container {
   max-width: var(--page-width, 1200px);
   margin: 0 auto;
-  padding: 0 1.5rem;
 }
 
 /* Header */
@@ -106,6 +105,7 @@
 .da-carousel {
   overflow: hidden;
   margin: 0 -0.75rem;
+  position: relative;
 }
 
 .da-carousel__track {
@@ -113,22 +113,27 @@
   gap: 1.25rem;
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   padding: 0.5rem 0.75rem 1rem;
+  width: fit-content;
 }
 
 .da-carousel__slide {
-  flex: 0 0 calc(25% - 0.9375rem);
+  flex: 0 0 auto;
+  width: calc((100vw - 3rem - 3.75rem) / 4); /* 4 columns: container padding (3rem) + 3 gaps (3.75rem) */
+  max-width: calc((var(--page-width, 1200px) - 3.75rem) / 4);
   min-width: 0;
 }
 
 @media (max-width: 989px) {
   .da-carousel__slide {
-    flex: 0 0 calc(33.333% - 0.833rem);
+    width: calc((100vw - 3rem - 2.5rem) / 3); /* 3 columns */
+    max-width: calc((var(--page-width, 1200px) - 2.5rem) / 3);
   }
 }
 
 @media (max-width: 749px) {
   .da-carousel__slide {
-    flex: 0 0 calc(50% - 0.625rem);
+    width: calc((100vw - 3rem - 1.25rem) / 2); /* 2 columns */
+    max-width: none;
   }
 }
 
@@ -202,7 +207,7 @@
 /* Mobile adjustments */
 @media (max-width: 749px) {
   .da-carousel-section {
-    padding: 3rem 0;
+    padding: 20px;
   }
 
   .da-carousel-section__header {
