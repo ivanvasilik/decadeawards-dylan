@@ -2461,6 +2461,10 @@ input[type='checkbox'] {
     max-width: 200px;
     height: 44px;
   }
+
+  .header {
+    padding: 6px, 10px;
+  }
 }
 
 .header__heading-logo-wrapper {
