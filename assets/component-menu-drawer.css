@@ -47,20 +47,15 @@ menu-drawer > details[open] > summary::before {
   height: calc(var(--viewport-height, 100vh) - (var(--header-bottom-position, 100%)));
 }
 
-.js details[open] > .menu-drawer,
-.js details[open] > .menu-drawer__submenu {
+.js details[open] > .menu-drawer {
   transition: transform var(--duration-default) ease, visibility var(--duration-default) ease;
 }
 
-.js details[open].menu-opening > .menu-drawer,
-details[open].menu-opening > .menu-drawer__submenu {
+.js details[open].menu-opening > .menu-drawer {
   transform: translateX(0);
   visibility: visible;
 }
 
-.js .menu-drawer__navigation .submenu-open {
-  visibility: hidden; /* hide menus from screen readers when hidden by submenu */
-}
 
 @media screen and (min-width: 750px) {
   .menu-drawer {
@@ -89,9 +84,9 @@ details[open].menu-opening > .menu-drawer__submenu {
 }
 
 .menu-drawer__inner-submenu {
-  height: 100%;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: visible;
+  padding: 0;
 }
 
 .js .menu-drawer__menu li {
@@ -131,22 +126,54 @@ details[open].menu-opening > .menu-drawer__submenu {
   right: 3rem;
   top: 50%;
   transform: translateY(-50%);
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+/* Show plus icon when closed, hide minus */
+.menu-drawer__icon-plus {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu-drawer__icon-minus {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Hide plus icon when open, show minus */
+details[open] > summary.menu-drawer__menu-item > .menu-drawer__icon-plus {
+  opacity: 0;
+  visibility: hidden;
+}
+
+details[open] > summary.menu-drawer__menu-item > .menu-drawer__icon-minus {
+  opacity: 1;
+  visibility: visible;
 }
 
 .js .menu-drawer__submenu {
-  position: absolute;
-  top: 0;
+  position: relative;
   width: 100%;
-  bottom: 0;
-  left: 0;
-  background-color: white;
+  background-color: rgba(var(--color-foreground), 0.02);
   z-index: 1;
-  transform: translateX(100%);
-  visibility: hidden;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.js details[open] > .menu-drawer__submenu {
+  max-height: 3000px;
+  opacity: 1;
 }
 
 .js .menu-drawer__submenu .menu-drawer__submenu {
   overflow-y: auto;
+}
+
+.menu-drawer__submenu .menu-drawer__menu-item {
+  padding-left: 4.5rem;
+  font-size: 1.6rem;
 }
 
 .menu-drawer__close-button {
