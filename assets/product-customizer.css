@@ -105,7 +105,7 @@
 .product-customizer__char-count {
   position: absolute;
   right: var(--da-space-lg, 1rem);
-  top: 50%; 
+  top: 56%; 
   transform: translateY(-50%);
   font-size: var(--da-font-counter, 0.875rem);
   color: var(--da-text-muted, #999);
