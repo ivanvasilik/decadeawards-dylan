@@ -1,6 +1,7 @@
 {% comment %}
   Decade Awards Custom Footer - Refined Professional Design
-  Clean, tight spacing, premium feel for an awards company
+  Mobile: Collapsible accordion sections (like original BigCommerce site)
+  Desktop: Expanded grid layout
 {% endcomment %}
 
 <footer class="da-footer">
@@ -22,9 +23,20 @@
       <!-- Footer Columns -->
       <div class="da-footer__columns">
         <!-- About Us -->
-        <div class="da-footer__column">
-          <h3 class="da-footer__heading">About Us</h3>
-          <ul class="da-footer__links">
+        <div class="da-footer__column da-footer__column--collapsible">
+          <button class="da-footer__toggle" aria-expanded="false" aria-controls="footer-about">
+            <span class="da-footer__toggle-text">About Us</span>
+            <span class="da-footer__toggle-icon">
+              <svg class="da-footer__icon-plus" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <svg class="da-footer__icon-minus" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </span>
+          </button>
+          <ul class="da-footer__links" id="footer-about">
             <li><a href="/pages/about-us">Decade Awards</a></li>
             <li><a href="/pages/our-story">Our Story</a></li>
             <li><a href="/pages/testimonials">Testimonials</a></li>
@@ -33,9 +45,20 @@
         </div>
 
         <!-- Help -->
-        <div class="da-footer__column">
-          <h3 class="da-footer__heading">Help</h3>
-          <ul class="da-footer__links">
+        <div class="da-footer__column da-footer__column--collapsible">
+          <button class="da-footer__toggle" aria-expanded="false" aria-controls="footer-help">
+            <span class="da-footer__toggle-text">Help</span>
+            <span class="da-footer__toggle-icon">
+              <svg class="da-footer__icon-plus" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <svg class="da-footer__icon-minus" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </span>
+          </button>
+          <ul class="da-footer__links" id="footer-help">
             <li><a href="/pages/contact">Contact Us</a></li>
             <li><a href="/pages/terms-conditions">Terms & Conditions</a></li>
             <li><a href="/pages/faq">FAQ's</a></li>
@@ -45,28 +68,66 @@
         </div>
 
         <!-- Tools -->
-        <div class="da-footer__column">
-          <h3 class="da-footer__heading">Tools</h3>
-          <ul class="da-footer__links">
+        <div class="da-footer__column da-footer__column--collapsible">
+          <button class="da-footer__toggle" aria-expanded="false" aria-controls="footer-tools">
+            <span class="da-footer__toggle-text">Tools</span>
+            <span class="da-footer__toggle-icon">
+              <svg class="da-footer__icon-plus" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <svg class="da-footer__icon-minus" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </span>
+          </button>
+          <ul class="da-footer__links" id="footer-tools">
             <li><a href="/pages/accessibility">Accessibility Statement</a></li>
+            <li><a href="/pages/amazon-plate-request-form">Amazon Plate Request Form</a></li>
             <li><a href="/pages/artwork-guidelines">Artwork Guidelines</a></li>
             <li><a href="/pages/design-ideas">Design Ideas</a></li>
             <li><a href="/pages/text-ideas">Text Ideas</a></li>
+            <li><a href="/collections/fantasy-football">Fantasy Football Trophies</a></li>
+            <li><a href="/collections/last-place-trophies">Last Place - Loser Trophies</a></li>
+            <li><a href="/collections/basketball">Basketball Trophies</a></li>
+            <li><a href="/collections/march-madness">March Madness Trophies</a></li>
+            <li><a href="/collections/sales-trophies">Sales Trophies</a></li>
+            <li><a href="/collections/spelling-bee">Spelling Bee Trophies</a></li>
+            <li><a href="/blogs/news">Musings from A Trophy Wife - Stories Behind Personalized Awards</a></li>
           </ul>
         </div>
 
         <!-- Site Info -->
-        <div class="da-footer__column">
-          <h3 class="da-footer__heading">Site Info</h3>
-          <ul class="da-footer__links">
+        <div class="da-footer__column da-footer__column--collapsible">
+          <button class="da-footer__toggle" aria-expanded="false" aria-controls="footer-siteinfo">
+            <span class="da-footer__toggle-text">Site Info</span>
+            <span class="da-footer__toggle-icon">
+              <svg class="da-footer__icon-plus" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <svg class="da-footer__icon-minus" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </span>
+          </button>
+          <ul class="da-footer__links" id="footer-siteinfo">
             <li><a href="/account">Account Information</a></li>
             <li><a href="/account">Orders</a></li>
             <li><a href="/cart">View Cart</a></li>
+            <li><a href="/blogs/news">Blogs</a></li>
             <li><a href="/pages/return-policy">Return Policy</a></li>
-            <li><a href="/collections/all">Fantasy Football Trophies</a></li>
-            <li><a href="/collections/all">Last Place - Loser Trophies</a></li>
-            <li><a href="/collections/all">Basketball Trophies</a></li>
-            <li><a href="/collections/all">Sales Trophies</a></li>
+            <li><a href="/collections/3d-crystals">3D Crystals Sub Surface engraving</a></li>
+            <li><a href="/pages/artwork-guidelines">Artwork Guidelines</a></li>
+            <li><a href="/pages/design-ideas">Design Ideas</a></li>
+            <li><a href="/pages/text-ideas">Text Ideas</a></li>
+            <li><a href="/collections/fantasy-football">Fantasy Football Trophies</a></li>
+            <li><a href="/collections/last-place-trophies">Last Place - Loser Trophies</a></li>
+            <li><a href="/collections/basketball">Basketball Trophies</a></li>
+            <li><a href="/collections/march-madness">March Madness Trophies</a></li>
+            <li><a href="/collections/sales-trophies">Sales Trophies</a></li>
+            <li><a href="/collections/spelling-bee">Spelling Bee Trophies</a></li>
+            <li><a href="/blogs/news">Celebrating Life's Victories Blog</a></li>
           </ul>
         </div>
 
@@ -107,6 +168,11 @@
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
               </a>
             {%- endif -%}
+            {%- if section.settings.social_linkedin != blank -%}
+              <a href="{{ section.settings.social_linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+            {%- endif -%}
             {%- if section.settings.social_youtube != blank -%}
               <a href="{{ section.settings.social_youtube }}" target="_blank" rel="noopener" aria-label="YouTube">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#fff"/></svg>
@@ -142,7 +208,14 @@
   <!-- Footer Bottom -->
   <div class="da-footer__bottom">
     <div class="da-footer__bottom-inner">
-      <p class="da-footer__copyright">&copy;{{ 'now' | date: '%Y' }} Decade Awards LLC, All Rights Reserved</p>
+      <div class="da-footer__bottom-text">
+        <p class="da-footer__copyright">&copy;{{ 'now' | date: '%Y' }} Decade Awards LLC, All Rights Reserved</p>
+        <p class="da-footer__legal">
+          By using this site you agree to our <a href="/policies/terms-of-service">Website Terms</a>.
+          <span class="da-footer__legal-sep">|</span>
+          <a href="/pages/accessibility">Accessibility Statement</a>
+        </p>
+      </div>
       <div class="da-footer__payments">
         <img
           src="{{ 'cards-payments-footer.webp' | asset_url }}"
@@ -237,6 +310,50 @@
     line-height: 1.3;
   }
 
+  /* ---- Accordion Toggle Button (Mobile) ---- */
+  .da-footer__toggle {
+    display: none; /* Hidden on desktop */
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 1rem 0;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: left;
+    border-bottom: 1px solid var(--footer-border);
+  }
+
+  .da-footer__toggle-text {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--footer-heading);
+    letter-spacing: 0.01em;
+  }
+
+  .da-footer__toggle-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--footer-heading);
+  }
+
+  .da-footer__icon-plus,
+  .da-footer__icon-minus {
+    transition: opacity 0.2s ease;
+  }
+
+  .da-footer__icon-minus {
+    display: none;
+  }
+
+  .da-footer__toggle[aria-expanded="true"] .da-footer__icon-plus {
+    display: none;
+  }
+
+  .da-footer__toggle[aria-expanded="true"] .da-footer__icon-minus {
+    display: block;
+  }
+
   /* ---- Links ---- */
   .da-footer__links {
     list-style: none;
@@ -271,6 +388,14 @@
     font-size: 0.9375rem;
     margin: 0 0 0.625rem;
     line-height: 1.45;
+  }
+
+  @media (max-width: 768px) {
+    .da-footer__subtitle {
+      font-size: 15px !important;
+      text-align: center;
+      padding: 10px;
+    }
   }
 
   .da-footer__newsletter-row {
@@ -327,6 +452,12 @@
     margin: 0 0 0.625rem;
   }
 
+  @media (max-width: 768px) {
+    .da-footer__connect-heading {
+      font-size: 20px; 
+      text-align: center;
+    }
+  }
   /* ---- Social Icons ---- */
   .da-footer__social {
     display: flex;
@@ -367,6 +498,13 @@
     font-size: 0.9375rem;
   }
 
+  @media (max-width: 768px) {
+    .da-footer__contact-item {
+      justify-content: center;
+      font-size: 20px;
+    }
+  }
+
   .da-footer__contact-item svg {
     color: var(--footer-muted);
     flex-shrink: 0;
@@ -400,10 +538,36 @@
     gap: 1rem;
   }
 
+  .da-footer__bottom-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
   .da-footer__copyright {
     color: var(--footer-muted);
     font-size: 0.9375rem;
     margin: 0;
+  }
+
+  .da-footer__legal {
+    color: var(--footer-muted);
+    font-size: 0.8125rem;
+    margin: 0;
+  }
+
+  .da-footer__legal a {
+    color: var(--footer-link);
+    text-decoration: none;
+  }
+
+  .da-footer__legal a:hover {
+    text-decoration: underline;
+  }
+
+  .da-footer__legal-sep {
+    margin: 0 0.5rem;
+    opacity: 0.7;
   }
 
   .da-footer__payments {
@@ -432,19 +596,64 @@
     }
   }
 
+  /* ---- MOBILE: Collapsible Accordion Style ---- */
   @media (max-width: 768px) {
     .da-footer__main {
-      padding: 0 1rem 1.5rem;
+      padding: 0;
+    }
+
+    .da-footer__inner {
+      padding: 0 1rem;
     }
 
     .da-footer__columns {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
     }
 
+    /* Show toggle button on mobile */
+    .da-footer__toggle {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Hide static heading on collapsible columns (mobile uses toggle instead) */
+    .da-footer__column--collapsible .da-footer__heading {
+      display: none;
+    }
+
+    /* Collapsible links - hidden by default on mobile */
+    .da-footer__column--collapsible .da-footer__links {
+      display: none;
+      padding: 0.75rem 0 1rem;
+      border-bottom: 1px solid var(--footer-border);
+    }
+
+    .da-footer__column--collapsible .da-footer__links.is-open {
+      display: block;
+    }
+
+    .da-footer__column--collapsible .da-footer__links li {
+      line-height: 2.2;
+    }
+
+    .da-footer__column--collapsible .da-footer__links a {
+      font-size: 15px;
+    }
+
+    /* Newsletter column - always visible on mobile */
     .da-footer__column--newsletter {
-      grid-column: span 2;
-      max-width: none;
+      order: 10; /* Push to bottom */
+      padding: 1.5rem 0;
+      border-top: none;
+    }
+
+    .da-footer__column--newsletter .da-footer__heading {
+      font-size: 18px !important;
+      text-align: center;
+      margin-bottom: 0.5rem;
     }
 
     .da-footer__bottom-inner {
@@ -461,36 +670,53 @@
     }
 
     .da-footer__logo-link img {
-      max-width: 300px;
+      max-width: 280px;
     }
 
-    .da-footer__columns {
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
+    .da-footer__inner {
+      padding: 0 0.75rem;
     }
 
-    .da-footer__column--newsletter {
-      grid-column: span 1;
+    .da-footer__toggle-text {
+      font-size: 18px;
     }
 
-    .da-footer__heading {
-      font-size: 0.75rem;
-      margin-bottom: 0.625rem;
-    }
-
-    .da-footer__links a {
-      font-size: 0.8125rem;
+    .da-footer__column--newsletter .da-footer__heading {
+      font-size: 1rem;
     }
 
     .da-footer__social {
-      justify-content: flex-start;
+      justify-content: center;
     }
 
     .da-footer__payments img {
-      height: 18px;
+      height: 21px;
     }
   }
 </style>
+
+<script>
+  // Footer Accordion Toggle (Mobile)
+  document.addEventListener('DOMContentLoaded', function() {
+    const footerToggles = document.querySelectorAll('.da-footer__toggle');
+
+    footerToggles.forEach(function(toggle) {
+      toggle.addEventListener('click', function() {
+        const expanded = this.getAttribute('aria-expanded') === 'true';
+        const targetId = this.getAttribute('aria-controls');
+        const targetLinks = document.getElementById(targetId);
+
+        // Toggle aria-expanded
+        this.setAttribute('aria-expanded', !expanded);
+
+        // Toggle links visibility
+        if (targetLinks) {
+          targetLinks.classList.toggle('is-open', !expanded);
+        }
+      });
+    });
+  });
+</script>
 
 {% schema %}
 {
