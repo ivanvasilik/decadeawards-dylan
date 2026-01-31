@@ -8,12 +8,6 @@
   - custom.has_comments: boolean to show/hide
 {% endcomment %}
 
-{% style %}
-  .product-customizer__comments {
-    position: relative;
-  }
-{% endstyle %}
-
 {%- liquid
   assign has_comments = product.metafields.custom.has_comments.value
   assign has_group_ordering = product.metafields.custom.has_group_ordering.value
@@ -35,8 +29,8 @@
       maxlength="500"
     ></textarea>
 
-  </div>
-  <div class="product-customizer__char-count">
-    <span data-current>0</span>/500 characters
+    <div class="product-customizer__char-count">
+      <span data-current>0</span>/500 characters
+    </div>
   </div>
 {%- endif -%}
