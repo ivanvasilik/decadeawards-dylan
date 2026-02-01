@@ -683,7 +683,7 @@ select {
 }
 
 .breadcrumbs__current {
-  color: var(--da-charcoal);
+  color:#463797;
   font-weight: 500;
 }
 
