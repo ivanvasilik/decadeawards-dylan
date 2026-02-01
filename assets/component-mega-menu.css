@@ -46,6 +46,7 @@
 .mega-menu[open] .mega-menu__content {
   opacity: 1;
   transform: translateY(0);
+  transition: 500ms;
 }
 
 /* Card-style mega menu layout */
