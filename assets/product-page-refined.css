@@ -387,8 +387,8 @@ span.pagination__item:not(.link):not(.pagination__item--current) {
 
 .pagination__item svg,
 .pagination__item .icon {
-  width: 1rem !important;
-  height: 1rem !important;
+  width: 20px !important;
+  height: 20px !important;
   transform: rotate(-90deg);
 }
 
