@@ -672,7 +672,7 @@ select {
 }
 
 .breadcrumbs__link {
-  color: var(--da-gray);
+  color: blue;
   text-decoration: none;
   transition: color 0.2s ease;
 }
